@@ -50,6 +50,23 @@ async function run() {
   // More code will be added below
 }
 
+function createModel() {
+  // Create a sequential model
+  const model = tf.sequential(); 
+  
+  // Add a single input layer
+  model.add(tf.layers.dense({inputShape: [1], units: 1, useBias: true}));
+  
+  // Add an output layer
+  model.add(tf.layers.dense({units: 1, useBias: true}));
+
+  return model;
+}
+
 app();
 
 document.addEventListener('DOMContentLoaded', run);
+
+// Create the model
+const model = createModel();  
+tfvis.show.modelSummary({name: 'Model Summary'}, model);
