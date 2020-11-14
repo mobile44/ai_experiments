@@ -43,10 +43,9 @@ async function app() {
 }
 
 async function listelements() {
-  var vids = document.getElementsByTagName('video') 
-  // vids is an HTMLCollection
-  for( var i = 0; i < vids.length; i++ ){ 
-      console.log( vids.item(i).src )
+  var videoTags = document.getElementsByTagName('video')
+  for( var i = 0; i < videoTags.length; i++ ){
+      alert( videoTags.item(i).currentSrc )
   }
 }
 
