@@ -42,4 +42,13 @@ async function app() {
   }
 }
 
-app();
+async function listelements() {
+  var vids = document.getElementsByTagName('video') 
+  // vids is an HTMLCollection
+  for( var i = 0; i < vids.length; i++ ){ 
+      console.log( vids.item(i).src )
+  }
+}
+
+listelements();
+//app();
