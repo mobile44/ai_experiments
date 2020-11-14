@@ -20,7 +20,8 @@ async function apptest() {
 async function app() {
   console.log('Loading mobilenet..');
   
-
+  const webcamElement = document.getElementById('webcam');
+  
   // Load the model.
   net = await mobilenet.load();
   console.log('Successfully loaded model');
