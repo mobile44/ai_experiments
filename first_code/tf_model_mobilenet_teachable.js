@@ -1,9 +1,5 @@
 let net;
 
-async function startup() {
-  const webcamElement = document.getElementById('webcam');
-}
-
 async function apptest() {
   console.log('Loading mobilenet..');
 
@@ -20,7 +16,7 @@ async function apptest() {
 async function app() {
   console.log('Loading mobilenet..');
   
-  const webcamElement = document.getElementById('webcam');
+  const webcamElement = document.querySelector('video');
   
   // Load the model.
   net = await mobilenet.load();
@@ -45,5 +41,5 @@ async function app() {
     await tf.nextFrame();
   }
 }
-startup();
+
 app();
