@@ -1,4 +1,4 @@
-const webcamElement = document.querySelector('video');
+const webcamElement = document.getElementById('webcam');
 let net;
 
 async function apptest() {
