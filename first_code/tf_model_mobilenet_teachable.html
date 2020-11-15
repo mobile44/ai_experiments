@@ -3,6 +3,17 @@
     <!-- Load the latest version of TensorFlow.js -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+    <style>
+      #webcam {
+        border: 1px solid black;
+        width: 320px;
+        height: 240px;
+      }
+      .camera {
+        width: 340px;
+        display: inline-block;
+      }
+    </style>
   </head>
   <body>
     <div id="console"></div>
@@ -10,11 +21,11 @@
     <img id="img" crossorigin src="https://i.imgur.com/JlUvsxa.jpg" width="227" height="227"/>
     <!-- Load index.js after the content of the page -->
     <script src="tf_model_mobilenet_teachable.js"></script>
-    <div>
+    <div id="url">
     https://codelabs.developers.google.com/codelabs/tensorflowjs-teachablemachine-codelab/index.html
     </div>
-    <div>
-      <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+    <div class="camera">
+    <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
     </div>
   </body>
 </html>
