@@ -1,0 +1,83 @@
+<!doctype html>
+
+<head>
+    <style>
+    /* CSS comes here */
+    #video {
+        border: 1px solid black;
+        width: 320px;
+        height: 240px;
+    }
+
+    #photo {
+        border: 1px solid black;
+        width: 320px;
+        height: 240px;
+    }
+
+    #canvas {
+        display: none;
+    }
+
+    .camera {
+        width: 340px;
+        display: inline-block;
+    }
+
+    .output {
+        width: 340px;
+        display: inline-block;
+    }
+
+    #startbutton {
+        display: block;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        bottom: 36px;
+        padding: 5px;
+        background-color: #6a67ce;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+        color: rgba(255, 255, 255, 1.0);
+        cursor: pointer;
+    }
+
+    .contentarea {
+        font-size: 16px;
+        font-family: Arial;
+        text-align: center;
+    }
+    </style>
+    <title>My Favorite Sport</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/knn-classifier"></script>
+    <!-- Load index.js after the content of the page -->
+    <script src="tf_model_mobilenet_teachable.js"></script>
+</head>
+
+<body>
+    <div class="contentarea">
+        <h1>
+            Using Javascript to capture Photo
+        </h1>
+        <div id="console"></div>
+        <div class="camera">
+            <video autoplay playsinline muted id="video">Video stream not available.</video>
+            <button id="class-a">Add A</button>
+            <button id="class-b">Add B</button>
+            <button id="class-c">Add C</button>
+        </div>
+        <div><button id="startbutton">Take photo</button></div>
+        <canvas id="canvas"></canvas>
+        <div class="output">
+            <img id="photo" alt="The screen capture will appear in this box.">
+        </div>       
+    </div>
+    <div>
+https://codelabs.developers.google.com/codelabs/tensorflowjs-teachablemachine-codelab/#0
+    </div>
+</body>
+
+</html>
