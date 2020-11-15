@@ -158,5 +158,5 @@ async function app() {
 }
 
 window.addEventListener('load', startup, false);
-predictapp();
-//app();
+//predictapp();
+app();
