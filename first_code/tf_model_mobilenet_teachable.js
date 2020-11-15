@@ -1,3 +1,4 @@
+const webcamElement = document.querySelector('video');
 let net;
 
 async function apptest() {
@@ -15,8 +16,6 @@ async function apptest() {
 
 async function app() {
   console.log('Loading mobilenet..');
-  
-  const webcamElement = document.querySelector('video');
   
   // Load the model.
   net = await mobilenet.load();
