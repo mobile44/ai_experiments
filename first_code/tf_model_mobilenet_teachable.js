@@ -73,5 +73,3 @@ function takepicture() {
 }
 
 window.addEventListener('load', startup, false);
-
-run();
