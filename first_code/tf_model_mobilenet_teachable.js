@@ -1,4 +1,7 @@
 const webcamElement = document.getElementById('webcam');
+var webcam;
+var img;
+var result;
 let net;
 
 async function apptest() {
@@ -23,10 +26,10 @@ async function app() {
   
   // Create an object from Tensorflow.js data API which could capture image 
   // from the web camera as Tensor.
-  const webcam = await tf.data.webcam(webcamElement);
+  webcam = await tf.data.webcam(webcamElement);
   while (true) {
-    const img = await webcam.capture();
-    const result = await net.classify(img);
+    mg = await webcam.capture();
+    result = await net.classify(img);
 
     document.getElementById('console').innerText = `
       prediction: ${result[0].className}\n
