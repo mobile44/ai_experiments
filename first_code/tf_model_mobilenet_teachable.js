@@ -44,7 +44,7 @@ async function app() {
 async function listelements() {
   var videoTags = document.getElementsByTagName('video')
   for( var i = 0; i < videoTags.length; i++ ){
-      alert( videoTags.item(i).currentSrc )
+      console.log( videoTags.item(i).currentSrc )
   }
 }
 
