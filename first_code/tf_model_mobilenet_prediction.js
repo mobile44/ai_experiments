@@ -83,7 +83,7 @@ function disablecamera() {
     video.pause();
     //video.srcObject= null;
     //video.src="";
-    video.stop();
+    //video.stop();
     console.log("Video off");
 }
 
