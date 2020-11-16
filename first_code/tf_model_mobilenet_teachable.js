@@ -6,6 +6,7 @@ var canvas = null;
 var photo = null;
 var startbutton = null;
 
+const webcam = await tf.data.webcam(video);
 const classifier = knnClassifier.create();
 
 function startup() {
@@ -83,7 +84,7 @@ async function predictapp() {
   
   // Create an object from Tensorflow.js data API which could capture image 
   // from the web camera as Tensor.
-  const webcam = await tf.data.webcam(video);
+  //const webcam = await tf.data.webcam(video);
   while (true) {
     const img = await webcam.capture();
     const result = await net.classify(img);
