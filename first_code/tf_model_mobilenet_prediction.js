@@ -79,7 +79,7 @@ function takepicture() {
 }
 */
 
-async function predictapp() {
+async function app() {
   console.log('Loading mobilenet..');
 
   // Load the model.
