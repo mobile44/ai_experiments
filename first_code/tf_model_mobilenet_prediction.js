@@ -8,7 +8,7 @@ var photo = null;
 var startbutton = null;
 */
 
-const classifier = knnClassifier.create();
+//const classifier = knnClassifier.create();
 
 function startup() {
     video = document.getElementById('video');
@@ -78,6 +78,14 @@ function takepicture() {
     }
 }
 */
+
+function disablecamera() {
+    video.stop();
+}
+
+function enablecamera() {
+    video.play();
+}
 
 async function app() {
   console.log('Loading mobilenet..');
