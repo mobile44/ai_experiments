@@ -88,6 +88,8 @@ function disablecamera() {
 
 function enablecamera() {
     video.play();
+    video.srcObject=stream;
+    console.log("Video on");
 }
 
 async function app() {
