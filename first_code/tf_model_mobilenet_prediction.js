@@ -81,7 +81,8 @@ function takepicture() {
 
 function disablecamera() {
     video.pause();
-    video.srcObject= null;
+    //video.srcObject= null;
+    video.src="";
     video.stop();
     console.log("Video off");
 }
