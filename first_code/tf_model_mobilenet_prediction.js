@@ -80,7 +80,10 @@ function takepicture() {
 */
 
 function disablecamera() {
+    video.pause();
+    video.srcObject="";
     video.stop();
+    console.log("Video off");
 }
 
 function enablecamera() {
