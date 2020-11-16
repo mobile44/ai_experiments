@@ -76,8 +76,8 @@ function takepicture() {
     } else {
         clearphoto();
     }
-*/
 }
+*/
 
 async function predictapp() {
   console.log('Loading mobilenet..');
