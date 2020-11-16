@@ -77,7 +77,7 @@ function takepicture() {
         clearphoto();
     }
 }
-*/
+
 
 function disablecamera() {
     video.pause();
@@ -92,7 +92,7 @@ function enablecamera() {
     video.srcObject=stream;
     console.log("Video on");
 }
-
+*/
 async function app() {
   console.log('Loading mobilenet..');
 
