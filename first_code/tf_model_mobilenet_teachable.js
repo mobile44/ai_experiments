@@ -6,7 +6,7 @@ var canvas = null;
 var photo = null;
 var startbutton = null;
 
-const webcam = await tf.data.webcam(video);
+const webcam = tf.data.webcam(video);
 const classifier = knnClassifier.create();
 
 function startup() {
