@@ -121,6 +121,7 @@
                     const wrapperElement = document.getElementById('numbers');
                     wrapperElement.innerHTML = `<table><tr>`;
                     for (let word of wordList) {
+                        console.log("word: ",word)
                         if (word==5) {
                             wrapperElement.innerHTML += `</tr><tr>`;
                         }
