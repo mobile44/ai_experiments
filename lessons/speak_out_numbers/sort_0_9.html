@@ -6,11 +6,15 @@
     <script src="https://unpkg.com/@tensorflow-models/speech-commands"></script>
     <script>
         var elements = document.querySelectorAll('*[id]');
-        for (var i = 0, n = elements.length; i < n; ++i) {
-            var el = elements[i];
-            if (el.id) {
-                console.log("ID: ", el.id);
+        if (elements) {
+            for (var i = 0, n = elements.length; i < n; ++i) {
+                var el = elements[i];
+                if (el.id) {
+                    console.log("ID: ", el.id);
+                }
             }
+        } else {
+            console.log("ID: None")
         }
     </script>
     <style>
