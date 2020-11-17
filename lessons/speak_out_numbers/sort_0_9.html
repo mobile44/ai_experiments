@@ -101,7 +101,7 @@
             <script>
                 var elements = document.querySelectorAll('*[id]');
                 if (elements) {
-                    console.log("ID:",elements.length)
+                    console.log("ID:",elements.length);
                     for (var i = 0, n = elements.length; i < n; ++i) {
                         var el = elements[i];
                         if (el.id) {
@@ -109,7 +109,7 @@
                         }
                     }
                 } else {
-                    console.log("ID: None")
+                    console.log("ID: None");
                 }
         
                 let recognizer;
@@ -121,7 +121,7 @@
                     const wrapperElement = document.getElementById('numbers');
                     wrapperElement.innerHTML = "<table><tr>";
                     for (let word of wordList) {
-                        console.log("word: ",word)
+                        console.log("word: ",word);
                         if (word===5) {
                             console.log("Add tr");
                             wrapperElement.innerHTML += "</tr><tr>";
