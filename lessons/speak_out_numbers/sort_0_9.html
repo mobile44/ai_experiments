@@ -10,15 +10,16 @@
             { index: 1, value: 100 },
             { index: 2, value: 150 },
         ];
-
         // Get a surface
         const surface = tfvis.visor().surface({ name: 'Barchart', tab: 'Charts' });
-
         // Render a barchart on that surface
         tfvis.render.barchart(surface, data, {});
     </script>
 </head>
 <body>
-tensorflow vision
+    <div class="header">
+        <h1>Sort The Numbers</h1>
+        <p>Speak out the number from small to big number</p>
+    </div>
 </body>
 </html>
