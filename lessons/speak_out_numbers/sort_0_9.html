@@ -5,11 +5,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script src="https://unpkg.com/@tensorflow-models/speech-commands"></script>
     <script>
-        <!--const data = [
-            { index: 0, value: 50 },
-            { index: 1, value: 100 },
-            { index: 2, value: 150 },
-        ];-->
         const wordlist = [ 
             { index: 0, value: 0 },
             { index: 1, value: 0 },
@@ -20,7 +15,7 @@
             { index: 6, value: 0 },
             { index: 7, value: 0 },
             { index: 8, value: 0 },
-            { index: 9, value: 0 }
+            { index: 9, value: 0 },
         ];
         // Get a surface
         const surface = tfvis.visor().surface({ name: 'Barchart', tab: 'Charts' });
