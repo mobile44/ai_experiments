@@ -24,11 +24,7 @@
         
         var checkbox = document.querySelector("input[name=audioswitch]");
         checkbox.addEventListener( 'change', function() {
-            if(this.checked) {
                 console.log("Check value:", document.getElementById("audioswitch").checked);
-            } else {
-                console.log("no checkbox value");
-            }
         });
         
         document.addEventListener('DOMContentLoaded', () => {
