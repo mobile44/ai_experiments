@@ -94,10 +94,9 @@
             -ms-transform: rotate(45deg);
             transform: rotate(45deg);
         }
-        .grid-container {
-            display: grid;
-            grid-column-gap: 2px;
-            grid-row-gap: 2px;
+        td {
+            background-color: #4CAF50;
+            color: white;
         }
     </style>
 </head>
@@ -114,17 +113,22 @@
                 Microphone
             </label>
         </div>
-        <div class="grid-container">
-            <div class="grid-item">0</div>
-            <div class="grid-item">1</div>
-            <div class="grid-item">2</div>
-            <div class="grid-item">3</div>
-            <div class="grid-item">4</div>
-            <div class="grid-item">5</div>
-            <div class="grid-item">6</div>
-            <div class="grid-item">7</div>
-            <div class="grid-item">8</div>
-            <div class="grid-item">9</div>         
+        <div class="numbers">
+            <table>
+                <tr>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
         </div>
     </div>
 </body>
