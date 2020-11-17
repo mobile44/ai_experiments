@@ -21,11 +21,13 @@
         const surface = tfvis.visor().surface({ name: 'Barchart', tab: 'Charts' });
         // Render a barchart on that surface
         tfvis.render.barchart(surface, wordlist, {});
-        var checkbox=document.getElementById("audioswitch");
-        if (checkbox) {
-            console.log("Check box event checked");
-        }
         
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkbox = document.getElementById('audioswitch');
+            if (checkbox) {
+                console.log("checkbox");
+            }
+        };
     </script>
     <style>
         .main {
