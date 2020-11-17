@@ -119,16 +119,16 @@
         
                 document.addEventListener('DOMContentLoaded', () => {
                     const wrapperElement = document.getElementById('numbers');
-                    wrapperElement.innerHTML = `<table><tr>`;
+                    wrapperElement.innerHTML = "<table><tr>";
                     for (let word of wordList) {
                         console.log("word: ",word)
                         if (word===5) {
                             console.log("Add tr")
-                            wrapperElement.innerHTML += `</tr><tr>`;
+                            wrapperElement.innerHTML += "</tr><tr>";
                         }
-                        wrapperElement.innerHTML += `<td>${word}</td>`;
+                        wrapperElement.innerHTML += "<td>${word}</td>";
                     };
-                    wrapperElement.innerHTML += `</tr></table>`;
+                    wrapperElement.innerHTML += "</tr></table>";
                 });
             </script>
         </div>
