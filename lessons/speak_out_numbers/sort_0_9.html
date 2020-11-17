@@ -5,100 +5,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script src="https://unpkg.com/@tensorflow-models/speech-commands"></script>
     <script>
-        let recognizer;
-        let words;
-        let modelLoaded = false;
-        //const wordlist = [ 
-        //    { index: 0, value: 0 },
-        //    { index: 1, value: 0 },
-        //    { index: 2, value: 0 },
-        //    { index: 3, value: 0 },
-        //    { index: 4, value: 0 },
-        //    { index: 5, value: 0 },
-        //    { index: 6, value: 0 },
-        //    { index: 7, value: 0 },
-        //    { index: 8, value: 0 },
-        //    { index: 9, value: 0 },
-        //];
-        const wordlist = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
-        // Get a surface
-        const surface = tfvis.visor().surface({ name: 'Barchart', tab: 'Charts' });
-        // Render a barchart on that surface
-        tfvis.render.barchart(surface, wordlist, {});
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const wrapperElement = document.getElementById('numbers');
-            wrapperElement.innerHTML = `<table><tr>`;
-            for (let word of wordList) {
-                if (word==5) {
-                    wrapperElement.innerHTML += `</tr><tr>`;
-                }
-                //wrapperElement.innerHTML += `<div class='col-3 col-md-6'><div id='word-${word}' class='badge'>${word}</div></div>`;
-                wrapperElement.innerHTML += `<td>${word}</td>`;
-            };
-            wrapperElement.innerHTML += `</tr></table>`;
-            
-            //Enable audio when audioswitch is checked
-            document.getElementById("audioswitch").addEventListener('change', (event) => {
-                if(event.target.checked) {
-                    if(modelLoaded) {
-                        console.log("Start listening")
-                        startListening();
-                    }else{
-                        console.log("Load module")
-                        loadModel();
-                    }
-                } else {
-                    console.log("Stop listening")
-                    stopListening();
-                }   
-            });
-        });
-        
-        async function loadModel() { 
-            // Show the loading element
-            //const loadingElement = document.getElementById('demo-loading');
-            //loadingElement.classList.remove('hidden');
-            
-            // When calling `create()`, you must provide the type of the audio input.
-            // - BROWSER_FFT uses the browser's native Fourier transform.
-            recognizer = speechCommands.create("BROWSER_FFT");  
-            await recognizer.ensureModelLoaded()
-            
-            words = recognizer.wordLabels();
-            modelLoaded = true;
-            
-            // Hide the loading element
-            //loadingElement.classList.add('hidden');
-            startListening();
-        }
-        
-        function startListening() {
-            recognizer.listen(({scores}) => {
-            
-                // Everytime the model evaluates a result it will return the scores array
-                // Based on this data we will build a new array with each word and it's corresponding score
-                scores = Array.from(scores).map((s, i) => ({score: s, word: words[i]}));
-                
-                // After that we sort the array by scode descending
-                scores.sort((s1, s2) => s2.score - s1.score);
-                
-                // And we highlight the word with the highest score
-                const elementId = `word-${scores[0].word}`;
-                document.getElementById(elementId).classList.add('active');
-                
-                // This is just for removing the highlight after 2.5 seconds
-                setTimeout(() => {
-                    document.getElementById(elementId).classList.remove('active');
-                }, 2500);
-            }, 
-            {
-                probabilityThreshold: 0.70
-            });
-        }
-        
-        function stopListening(){
-            recognizer.stopListening();
+        var elements = document.querySelectorAll('*[id]')
+        for (var i = 0, n = elements.length; i < n; ++i) {
+            var el = allElements[i];
+            if (el.id) {
+                console.log("ID: ", el.id);
+            }
         }
     </script>
     <style>
