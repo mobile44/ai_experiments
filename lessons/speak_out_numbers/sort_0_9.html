@@ -5,6 +5,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script src="https://unpkg.com/@tensorflow-models/speech-commands"></script>
     <script>
+        let recognizer;
+        let words;
+        let modelLoaded = false;
         const wordlist = [ 
             { index: 0, value: 0 },
             { index: 1, value: 0 },
@@ -26,9 +29,63 @@
             var checkbox = e.target;
             if (checkbox.checked) {
                 console.log("Check value:", document.getElementById("audioswitch").checked);
+                if (modelLoaded) {
+                    console.log("Conduct speech recognition.");
+                    startListening();
+                }else{
+                    console.log("Load speech recognition model.");
+                    loadModel();
+                }
             } else {
                 console.log("Check value:", document.getElementById("audioswitch").checked);
+                stopListening();
             }
+        }
+        
+        async function loadModel() { 
+            // Show the loading element
+            //const loadingElement = document.getElementById('demo-loading');
+            //loadingElement.classList.remove('hidden');
+            
+            // When calling `create()`, you must provide the type of the audio input.
+            // - BROWSER_FFT uses the browser's native Fourier transform.
+            recognizer = speechCommands.create("BROWSER_FFT");  
+            await recognizer.ensureModelLoaded()
+            
+            words = recognizer.wordLabels();
+            modelLoaded = true;
+            
+            // Hide the loading element
+            //loadingElement.classList.add('hidden');
+            startListening();
+        }
+        
+        function startListening() {
+            recognizer.listen(({scores}) => {
+            
+                // Everytime the model evaluates a result it will return the scores array
+                // Based on this data we will build a new array with each word and it's corresponding score
+                scores = Array.from(scores).map((s, i) => ({score: s, word: words[i]}));
+                
+                // After that we sort the array by scode descending
+                scores.sort((s1, s2) => s2.score - s1.score);
+                
+                // And we highlight the word with the highest score
+                const elementId = `word-${scores[0].word}`;
+                document.getElementById(elementId).classList.add('active');
+                
+                // This is just for removing the highlight after 2.5 seconds
+                setTimeout(() => {
+                    document.getElementById(elementId).classList.remove('active');
+                }, 2500);
+            }, 
+            {
+                probabilityThreshold: 0.70
+            });
+        }
+        
+        function stopListening(){
+            recognizer.stopListening();
         }
     </script>
     <style>
