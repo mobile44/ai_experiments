@@ -22,21 +22,14 @@
         // Render a barchart on that surface
         tfvis.render.barchart(surface, wordlist, {});
         
-        const checkbox = document.querySelector("input[name=audioswitch]");
-        if (checkbox) {
-            checkbox.addEventListener( 'change', function() {
+        const checkbox = document.getElementById('audioswitch')
+        checkbox.addEventListener('change', (event) => {
+            if (event.target.checked) {
                 console.log("Check value:", document.getElementById("audioswitch").checked);
-            });
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const checkbox = document.getElementById('audioswitch');
-            if (checkbox) {
-                console.log("checkbox",document.getElementById("audioswitch").checked);
             } else {
-                console.log("no checkbox value");
+                console.log("Check value:", document.getElementById("audioswitch").checked);
             }
-        });
+        })
     </script>
     <style>
         .main {
