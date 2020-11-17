@@ -23,9 +23,11 @@
         tfvis.render.barchart(surface, wordlist, {});
         
         var checkbox = document.querySelector("input[name=audioswitch]");
-        checkbox.addEventListener( 'change', function() {
+        if (checkbox) {
+            checkbox.addEventListener( 'change', function() {
                 console.log("Check value:", document.getElementById("audioswitch").checked);
-        });
+            });
+        }
         
         document.addEventListener('DOMContentLoaded', () => {
             const checkbox = document.getElementById('audioswitch');
