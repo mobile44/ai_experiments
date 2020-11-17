@@ -25,12 +25,15 @@
         document.getElementById("audioswitch").addEventListener('change', (event) => {
             if(event.target.checked) {
                 if(modelLoaded) {
-                    startListening();
+                    //startListening();
+                    console.log("Checkbox",event.target.checked);
                 }else{
-                    loadModel();
+                    //loadModel();
+                    console.log("Checkbox",event.target.checked);
                 }
             } else {
-                stopListening();
+                //stopListening();
+                    console.log("Checkbox",event.target.checked);
             }
         });
     </script>
