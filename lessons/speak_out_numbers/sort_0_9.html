@@ -25,7 +25,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             const checkbox = document.getElementById('audioswitch');
             if (checkbox) {
-                console.log("checkbox");
+                console.log("checkbox",document.getElementById("audioswitch").checked);
+            } else {
+                console.log("no checkbox value");
             }
         });
     </script>
