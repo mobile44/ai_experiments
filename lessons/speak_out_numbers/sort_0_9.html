@@ -22,16 +22,14 @@
         // Render a barchart on that surface
         tfvis.render.barchart(surface, wordlist, {});
         
-        const checkbox = document.getElementById('audioswitch')
-        checkbox.addEventListener('change', (event) => {
-            if (event.target.checked) {
+        function handleChange(e) {
+            var checkbox = e.target;
+            if (checkbox.checked) {
                 console.log("Check value:", document.getElementById("audioswitch").checked);
-                //alert('checked');
             } else {
                 console.log("Check value:", document.getElementById("audioswitch").checked);
-                //alert('uncheck');
             }
-        })
+        }
     </script>
     <style>
         .main {
@@ -121,7 +119,7 @@
         </div>
         <div class="checkbox">
             <label class="container">One
-                <input type="checkbox" id="audioswitch">
+                <input type="checkbox" id="audioswitch" onchange="handleChange(event)">
                 <span class="checkmark"></span>
                 Microphone
             </label>
