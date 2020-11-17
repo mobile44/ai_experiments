@@ -1,20 +1,22 @@
 <body>
 <head>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
-<script>
-const data = [
-  { index: 0, value: 50 },
-  { index: 1, value: 100 },
-  { index: 2, value: 150 },
-];
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="https://unpkg.com/@tensorflow-models/speech-commands"></script>
+    <script>
+        const data = [
+            { index: 0, value: 50 },
+            { index: 1, value: 100 },
+            { index: 2, value: 150 },
+        ];
 
-// Get a surface
-const surface = tfvis.visor().surface({ name: 'Barchart', tab: 'Charts' });
+        // Get a surface
+        const surface = tfvis.visor().surface({ name: 'Barchart', tab: 'Charts' });
 
-// Render a barchart on that surface
-tfvis.render.barchart(surface, data, {});
-</script>
+        // Render a barchart on that surface
+        tfvis.render.barchart(surface, data, {});
+    </script>
 </head>
 <body>
 tensorflow vision
