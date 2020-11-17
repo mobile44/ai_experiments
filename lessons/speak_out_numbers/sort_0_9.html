@@ -25,22 +25,31 @@
         // Render a barchart on that surface
         tfvis.render.barchart(surface, wordlist, {});
         
-        function handleChange(e) {
-            var checkbox = e.target;
-            if (checkbox.checked) {
-                console.log("Check value:", document.getElementById("audioswitch").checked);
-                if (modelLoaded) {
-                    console.log("Conduct speech recognition.");
-                    startListening();
-                }else{
-                    console.log("Load speech recognition model.");
-                    loadModel();
+        document.addEventListener('DOMContentLoaded', () => {
+            const wrapperElement = document.getElementById('sp-cmd-wrapper');
+            wrapperElement.innerHTML = "<table><tr>
+            for (let word of wordList) {
+                if (word==5) {
+                    wrapperElement.innerHTML += `</tr><tr>`;
                 }
-            } else {
-                console.log("Check value:", document.getElementById("audioswitch").checked);
-                stopListening();
-            }
-        }
+                //wrapperElement.innerHTML += `<div class='col-3 col-md-6'><div id='word-${word}' class='badge'>${word}</div></div>`;
+                wrapperElement.innerHTML += `<td>${word}</td>`;
+            };
+            wrapperElement.innerHTML += `</tr></table>`;
+            
+            //Enable audio when audioswitch is checked
+            document.getElementById("audioswitch").addEventListener('change', (event) => {
+                if(event.target.checked) {
+                    if(modelLoaded) {
+                        startListening();
+                    }else{
+                        loadModel();
+                    }
+                } else {
+                    stopListening();
+                }   
+            });
+        });
         
         async function loadModel() { 
             // Show the loading element
@@ -182,7 +191,7 @@
             </label>
         </div>
         <div class="numbers">
-            <table>
+            <!--<table>
                 <tr>
                     <td>0</td>
                     <td>1</td>
@@ -197,6 +206,7 @@
                     <td>8</td>
                     <td>9</td>
                 </tr>
+            </table>-->
         </div>
     </div>
 </body>
