@@ -97,7 +97,7 @@
                 Microphone
             </label>
         </div>
-        <div class="numbers">
+        <div id="numbers">
             <!--<table>
                 <tr>
                     <td>0</td>
@@ -129,6 +129,23 @@
         } else {
             console.log("ID: None")
         }
+        
+        let recognizer;
+        let words;
+        let modelLoaded = false;        
+        const wordlist = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const wrapperElement = document.getElementById('numbers');
+            wrapperElement.innerHTML = `<table><tr>`;
+            for (let word of wordList) {
+                if (word==5) {
+                    wrapperElement.innerHTML += `</tr><tr>`;
+                }
+                //wrapperElement.innerHTML += `<div class='col-3 col-md-6'><div id='word-${word}' class='badge'>${word}</div></div>`;
+                wrapperElement.innerHTML += `<td>${word}</td>`;
+            };
+            wrapperElement.innerHTML += `</tr></table>`;
     </script>
 </body>
 </html>
