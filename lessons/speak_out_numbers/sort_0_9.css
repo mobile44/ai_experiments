@@ -76,13 +76,13 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-td {
+#td0 {
     background-color: #4CAF50;
     color: white;
     font-size: 20px;
     padding: 10px;
 }
-#td0 {
+#td {
     background-color: #F5F5F5;
     color: white;
     font-size: 20px;
