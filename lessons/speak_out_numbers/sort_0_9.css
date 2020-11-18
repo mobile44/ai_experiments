@@ -76,13 +76,13 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-#td0,#td1,#td2,#td3,#td4,#td5,#td6,#td7,#td8 {
+#td0,#td1,#td2,#td3,#td4,#td5,#td6,#td7,#td8,#td9 {
     background-color: #4CAF50;
     color: white;
     font-size: 20px;
     padding: 10px;
 }
-#td9 {
+#tda {
     background-color: #F5F5F5;
     color: white;
     font-size: 20px;
