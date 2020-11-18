@@ -20,6 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
             stopListening();
         }   
     });
+        
+    document.getElementById("audioswitch").addEventListener('change', (event) => {
+        if(event.target.checked) {
+            if(modelLoaded) {
+                startListening();
+            }else{
+                loadModel();
+            }
+        } else {
+            stopListening();
+        }   
+    });
 });
         
 async function loadModel() { 
