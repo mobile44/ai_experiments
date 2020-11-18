@@ -67,7 +67,7 @@ function startListening() {
         scores.sort((s1, s2) => s2.score - s1.score);
         console.log("Score sorted: ",scores);
         
-        if (numList.include(scores[0].word)) {
+        if (numList.includes(scores[0].word)) {
             // And we highlight the word with the highest score
             const elementId = `word-${scores[0].word}`;
             console.log("Class ID",`word-${scores[0].word}`);
