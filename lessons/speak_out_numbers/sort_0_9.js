@@ -10,17 +10,24 @@ document.addEventListener('DOMContentLoaded', () => {
         wrapperElement.innerHTML += `<div class='col-3 col-md-6'><div id='word-${word}' class='badge'>${word}</div></div>`;
     };
     
-    var table = document.createElement('table');
-    var row = table.insertRow(0);
-    for(j=0; j<numList.length; j++){
-        var text = document.createTextNode(numList[j]);
-        var cell = row.insertCell(j);
-        var cellid = document.createAttribute("id");
-        cellid.value = `${text}-${j}`; 
-        cell.setAttributeNode(cellid); 
-        cell.appendChild(text);
+    for (j=0; j<numList.length; j++) {
+        var idname = `td${j}`;
+        console.log("IDNAME:",idname);
+        var wrapper = document.getElementById(idname);
+        wrapper.innerHTML = numList[j];
     }
-    document.getElementById("numbers").appendChild(table);
+            
+    //var table = document.createElement('table');
+    //var row = table.insertRow(0);
+    //for(j=0; j<numList.length; j++){
+    //    var text = document.createTextNode(numList[j]);
+    //    var cell = row.insertCell(j);
+    //    var cellid = document.createAttribute("id");
+    //    cellid.value = `${text}-${j}`; 
+    //    cell.setAttributeNode(cellid); 
+    //    cell.appendChild(text);
+    //}
+    //document.getElementById("numbers").appendChild(table);
         
     document.getElementById("audio-switch").addEventListener('change', (event) => {
         if(event.target.checked) {
