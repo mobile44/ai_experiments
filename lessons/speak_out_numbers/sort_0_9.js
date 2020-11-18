@@ -4,11 +4,6 @@ const wordList = ["zero","one","two","three","four","five","six","seven","eight"
 let modelLoaded = false;
         
 document.addEventListener('DOMContentLoaded', () => {
-    const wrapperElement = document.getElementById('sp-cmd-wrapper');
-    for (let word of wordList) {
-        wrapperElement.innerHTML += `<div class='col-3 col-md-6'><div id='word-${word}' class='badge'>${word}</div></div>`;
-    };
-        
     const numbers = document.getElementById("numbers")
     const table = document.createElement('table');
     const row = table.insertRow(0);
@@ -18,7 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
          cell.appendChild(text);
     }
     numbers.appendChild(table);
-            
+        
+    const wrapperElement = document.getElementById('sp-cmd-wrapper');
+    for (let word of wordList) {
+        wrapperElement.innerHTML += `<div class='col-3 col-md-6'><div id='word-${word}' class='badge'>${word}</div></div>`;
+    };
+        
     document.getElementById("audio-switch").addEventListener('change', (event) => {
         if(event.target.checked) {
             if(modelLoaded) {
