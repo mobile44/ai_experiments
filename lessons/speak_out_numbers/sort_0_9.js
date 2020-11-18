@@ -65,6 +65,7 @@ function startListening() {
                 
         // And we highlight the word with the highest score
         const elementId = `word-${scores[0].word}`;
+        console.log("Class ID",`word-${scores[0].word}`)
         document.getElementById(elementId).classList.add('active');
                 
         // This is just for removing the highlight after 2.5 seconds
