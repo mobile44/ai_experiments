@@ -134,16 +134,28 @@
                 document.addEventListener('DOMContentLoaded', () => {
                     //const wrapperElement = document.getElementById('numbers');
                     var table = document.createElement('table');
-                    //table.setAttribute('border','1');
-                    //table.setAttribute('width','100%')
                     var row = table.insertRow(0);
                     for(j=0; j<wordList.length; j++){
                         var text = document.createTextNode(wordList[j]);
                         var cell = row.insertCell(j);
-                        //cell.setAttribute('align','center')
                         cell.appendChild(text);
                     }
                     document.getElementById("numbers").appendChild(table);
+                    
+                    document.getElementById("audioswitch").addEventListener('change', (event) => {
+                        if(event.target.checked) {
+                            if(modelLoaded) {
+                                console.log("Start listen")
+                                //startListening();
+                            }else{
+                                console.log("Load model")
+                                //loadModel();
+                            }
+                        } else {
+                            console.log("Stop listen")
+                            //stopListening();
+                        }   
+                    });
                 });
             </script>
         </div>
