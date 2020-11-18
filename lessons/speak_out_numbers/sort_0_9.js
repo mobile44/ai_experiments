@@ -46,6 +46,7 @@ async function loadModel() {
     await recognizer.ensureModelLoaded()
             
     words = recognizer.wordLabels();
+    console.log("Words: ", words)
     modelLoaded = true;
             
     // Hide the loading element
