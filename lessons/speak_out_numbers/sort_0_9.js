@@ -65,6 +65,7 @@ function startListening() {
                 
         // After that we sort the array by scode descending
         scores.sort((s1, s2) => s2.score - s1.score);
+        console.log("Score sorted: ",scores);
                 
         // And we highlight the word with the highest score
         const elementId = `word-${scores[0].word}`;
