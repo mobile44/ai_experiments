@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     var table = document.createElement('table');
     var row = table.insertRow(0);
-    for(j=0; j<wordList.length; j++){
+    for(j=0; j<numList.length; j++){
         var text = document.createTextNode(numList[j]);
         var cell = row.insertCell(j);
         cell.appendChild(text);
