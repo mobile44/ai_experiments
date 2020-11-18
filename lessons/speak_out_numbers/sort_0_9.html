@@ -116,7 +116,7 @@
                 let words;
                 let modelLoaded = false;        
                 const wordList = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
-        
+                /*
                 document.addEventListener('DOMContentLoaded', () => {
                     const wrapperElement = document.getElementById('numbers');
                     wrapperElement.innerHTML = "<table><tr>";
@@ -129,6 +129,22 @@
                         wrapperElement.innerHTML += "<td>"+ word +"</td>";
                     };
                     wrapperElement.innerHTML += "</tr></table>";
+                });
+                */
+                document.addEventListener('DOMContentLoaded', () => {
+                    //const wrapperElement = document.getElementById('numbers');
+                    var table = document.createElement('table');
+                    //table.setAttribute('border','1');
+                    //table.setAttribute('width','100%')
+                    var row = table.insertRow(0);
+                    for(j=0; j<10; j++){
+                        //var text = document.createTextNode(String.fromCharCode(j+64));
+                        var text = j
+                        var cell = row.insertCell(j);
+                        //cell.setAttribute('align','center')
+                        cell.appendChild(text);
+                    }
+                    document.getElementById("numbers").appendChild(table);
                 });
             </script>
         </div>
