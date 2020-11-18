@@ -47,6 +47,7 @@ async function loadModel() {
             
     words = recognizer.wordLabels();
     console.log("Words: ", words)
+    words = ["zero","one","two","three","four","five","six","seven","eight","nine"];
     modelLoaded = true;
             
     // Hide the loading element
