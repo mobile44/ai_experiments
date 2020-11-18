@@ -138,7 +138,7 @@
                     //table.setAttribute('width','100%')
                     var row = table.insertRow(0);
                     for(j=0; j<10; j++){
-                        var text = document.createTextNode(String.fromCharCode(j+64));
+                        var text = document.createTextNode(j);
                         var cell = row.insertCell(j);
                         //cell.setAttribute('align','center')
                         cell.appendChild(text);
