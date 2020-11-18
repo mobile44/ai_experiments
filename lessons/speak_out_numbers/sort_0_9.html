@@ -134,14 +134,16 @@
                 */
                 document.addEventListener('DOMContentLoaded', () => {
                     //const wrapperElement = document.getElementById('numbers');
-                    var table = document.createElement('table');
-                    var row = table.insertRow(0);
-                    for(j=0; j<wordList.length; j++){
-                        var text = document.createTextNode(wordList[j]);
-                        var cell = row.insertCell(j);
-                        cell.appendChild(text);
+                    if (modelLoaded===false) {
+                        var table = document.createElement('table');
+                        var row = table.insertRow(0);
+                        for(j=0; j<wordList.length; j++){
+                            var text = document.createTextNode(wordList[j]);
+                            var cell = row.insertCell(j);
+                            cell.appendChild(text);
+                        }
+                        document.getElementById("numbers").appendChild(table);
                     }
-                    document.getElementById("numbers").appendChild(table);
                     
                     document.getElementById("audioswitch").addEventListener('change', (event) => {
                         if(event.target.checked) {
