@@ -87,6 +87,8 @@ function startListening() {
         console.log("Score sorted: ",scores);
         
         if (numList.includes(scores[0].word)) {
+            var idnum = numList.findindex(scores[0].word)
+            document.getElementById(`td${idnum}`).style.backgroundColor = "#F5F5F5";
             // And we highlight the word with the highest score
             const elementId = `word-${scores[0].word}`;
             console.log("Class ID",`word-${scores[0].word}`);
