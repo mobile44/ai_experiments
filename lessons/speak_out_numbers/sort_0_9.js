@@ -1,7 +1,7 @@
 let recognizer;
 let words;
-//const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine", "yes", "no", "up", "down", "left", "right", "stop", "go"];
-const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
+const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine", "yes", "no", "up", "down", "left", "right", "stop", "go"];
+const numList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
 let modelLoaded = false;
         
 document.addEventListener('DOMContentLoaded', () => {
@@ -47,7 +47,7 @@ async function loadModel() {
             
     words = recognizer.wordLabels();
     console.log("Words: ", words);
-    words = ["_background_noise_", "_unknown_","zero","one","two","three","four","five","six","seven","eight","nine"];
+    //words = ["_background_noise_", "_unknown_","zero","one","two","three","four","five","six","seven","eight","nine"];
     modelLoaded = true;
             
     // Hide the loading element
@@ -66,16 +66,18 @@ function startListening() {
         // After that we sort the array by scode descending
         scores.sort((s1, s2) => s2.score - s1.score);
         console.log("Score sorted: ",scores);
+        
+        if (numList.include(scores[0].word) {
+            // And we highlight the word with the highest score
+            const elementId = `word-${scores[0].word}`;
+            console.log("Class ID",`word-${scores[0].word}`);
+            document.getElementById(elementId).classList.add('active');
                 
-        // And we highlight the word with the highest score
-        const elementId = `word-${scores[0].word}`;
-        console.log("Class ID",`word-${scores[0].word}`);
-        document.getElementById(elementId).classList.add('active');
-                
-        // This is just for removing the highlight after 2.5 seconds
-        setTimeout(() => {
-            document.getElementById(elementId).classList.remove('active');
-        }, 2500);
+            // This is just for removing the highlight after 2.5 seconds
+            setTimeout(() => {
+                document.getElementById(elementId).classList.remove('active');
+            }, 2500);
+        }
     }, 
     {
         probabilityThreshold: 0.70
