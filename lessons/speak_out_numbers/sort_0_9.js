@@ -1,24 +1,14 @@
 let recognizer;
 let words;
-const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
+const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine", "yes", "no", "up", "down", "left", "right", "stop", "go"];
 let modelLoaded = false;
         
 document.addEventListener('DOMContentLoaded', () => {
-    const numbers = document.getElementById("numbers")
-    const table = document.createElement('table');
-    const row = table.insertRow(0);
-    for(j=0; j<wordList.length; j++){
-        const text = document.createTextNode(wordList[j]);
-        const cell = row.insertCell(j);
-         cell.appendChild(text);
-    }
-    numbers.appendChild(table);
-        
     const wrapperElement = document.getElementById('sp-cmd-wrapper');
     for (let word of wordList) {
         wrapperElement.innerHTML += `<div class='col-3 col-md-6'><div id='word-${word}' class='badge'>${word}</div></div>`;
     };
-        
+            
     document.getElementById("audio-switch").addEventListener('change', (event) => {
         if(event.target.checked) {
             if(modelLoaded) {
