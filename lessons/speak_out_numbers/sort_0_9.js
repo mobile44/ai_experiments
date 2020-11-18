@@ -46,8 +46,8 @@ async function loadModel() {
     await recognizer.ensureModelLoaded()
             
     words = recognizer.wordLabels();
-    console.log("Words: ", words)
-    words = ["zero","one","two","three","four","five","six","seven","eight","nine"];
+    console.log("Words: ", words);
+    words = ["_background_noise_", "_unknown_","zero","one","two","three","four","five","six","seven","eight","nine"];
     modelLoaded = true;
             
     // Hide the loading element
@@ -61,13 +61,14 @@ function startListening() {
         // Everytime the model evaluates a result it will return the scores array
         // Based on this data we will build a new array with each word and it's corresponding score
         scores = Array.from(scores).map((s, i) => ({score: s, word: words[i]}));
+        console.log("Score:",scores);
                 
         // After that we sort the array by scode descending
         scores.sort((s1, s2) => s2.score - s1.score);
                 
         // And we highlight the word with the highest score
         const elementId = `word-${scores[0].word}`;
-        console.log("Class ID",`word-${scores[0].word}`)
+        console.log("Class ID",`word-${scores[0].word}`);
         document.getElementById(elementId).classList.add('active');
                 
         // This is just for removing the highlight after 2.5 seconds
