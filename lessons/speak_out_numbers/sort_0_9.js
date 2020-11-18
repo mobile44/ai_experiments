@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     for(j=0; j<numList.length; j++){
         var text = document.createTextNode(numList[j]);
         var cell = row.insertCell(j);
+        var cellid = document.createAttribute("id");
+        cellid.value = `${text}-${j}`; 
+        cell.setAttributeNode(cellid); 
         cell.appendChild(text);
     }
     document.getElementById("numbers").appendChild(table);
