@@ -9,18 +9,18 @@
         <div id='seconds-counter'> </div>
     </body>
     <script>
-        const surface = tfvis.visor().surface({ name: 'Barchart', tab: 'Charts' });
+        //const surface = tfvis.visor().surface({ name: 'Barchart', tab: 'Charts' });
         var seconds = 0;
         var el = document.getElementById('seconds-counter');
-        var data = [ {index: "Seconds", value: 0} ];
+        //var data = [ {index: "Seconds", value: 0} ];
         function incrementSeconds() {
             seconds += 1;
             if (el) {
                 el.innerText = "You have been here for " + seconds + " seconds.";
-                data[0].value=seconds;
-                tfvis.render.barchart(surface, data, {}); 
+                //data[0].value=seconds;
+                //tfvis.render.barchart(surface, data, {}); 
             }
         }
-        var cancel = setInterval(incrementSeconds, 1000);
+        var cancel = setInterval(incrementSeconds, 100);
     </script>
 </html>
