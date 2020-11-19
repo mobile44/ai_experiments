@@ -58,6 +58,8 @@ async function loadModel() {
     // Show the loading element
     const loadingElement = document.getElementById('demo-loading');
     loadingElement.classList.remove('hidden');
+    const showElement = document.getElementById('Module-loading');
+    showElement.classList.remove('show');
             
     // When calling `create()`, you must provide the type of the audio input.
     // - BROWSER_FFT uses the browser's native Fourier transform.
@@ -71,6 +73,7 @@ async function loadModel() {
             
     // Hide the loading element
     loadingElement.classList.add('hidden');
+    showElement.classList.add('show');
     startListening();
 }
         
