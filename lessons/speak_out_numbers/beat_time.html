@@ -145,6 +145,7 @@
                 <script>
                     let recognizer;
                     let words;
+                    let modelLoaded = false;
                     const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine", "yes", "no", "up", "down", "left", "right", "stop", "go"];
                     const numList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
                     const gameList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
@@ -167,7 +168,17 @@
                             }   
                         });
                     });
-                    let modelLoaded = false;
+                    async function loadModel() { 
+                        const showElement = document.getElementById('Module-loading');
+                        showElement.classList.remove('show');
+                        recognizer = speechCommands.create("BROWSER_FFT");  
+                        await recognizer.ensureModelLoaded()           
+                        words = recognizer.wordLabels();
+                        console.log("Words: ", words);
+                        modelLoaded = true;            
+                        showElement.classList.add('show');
+                        startListening();
+                    }
                     setInterval(showTime, 1000); 
                     function showTime() { 
                         let time = new Date(); 
