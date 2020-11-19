@@ -2,6 +2,7 @@ let recognizer;
 let words;
 const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine", "yes", "no", "up", "down", "left", "right", "stop", "go"];
 const numList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
+const gameList = [...numList];
 let modelLoaded = false;
         
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,17 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
     //}
     //document.getElementById("numbers").appendChild(table);
         
-    document.getElementById("audio-switch").addEventListener('change', (event) => {
-        if(event.target.checked) {
-            if(modelLoaded) {
-                startListening();
-            }else{
-                loadModel();
-            }
-        } else {
-            stopListening();
-        }   
-    });
+    //document.getElementById("audio-switch").addEventListener('change', (event) => {
+    //    if(event.target.checked) {
+    //        if(modelLoaded) {
+    //            startListening();
+    //        }else{
+    //            loadModel();
+    //        }
+    //    } else {
+    //        stopListening();
+    //    }   
+    //});
         
     document.getElementById("audioswitch").addEventListener('change', (event) => {
         if(event.target.checked) {
@@ -68,7 +69,6 @@ async function loadModel() {
             
     words = recognizer.wordLabels();
     console.log("Words: ", words);
-    //words = ["_background_noise_", "_unknown_","zero","one","two","three","four","five","six","seven","eight","nine"];
     modelLoaded = true;
             
     // Hide the loading element
@@ -89,12 +89,13 @@ function startListening() {
         scores.sort((s1, s2) => s2.score - s1.score);
         console.log("Score sorted: ",scores);
         
-        if (numList.includes(scores[0].word)) {
+        if (gameList===scores[0].word) {
+            gameList.splice(0,1);
             const idnum = numList.findIndex(numind => numind===scores[0].word);
             document.getElementById(`td${idnum}`).style.backgroundColor = "#F5F5F5";
             // And we highlight the word with the highest score
             const elementId = `word-${scores[0].word}`;
-            console.log("Class ID",`word-${scores[0].word}`);
+            //console.log("Class ID",`word-${scores[0].word}`);
             document.getElementById(elementId).classList.add('active');
                 
             // This is just for removing the highlight after 2.5 seconds
@@ -102,6 +103,20 @@ function startListening() {
                 document.getElementById(elementId).classList.remove('active');
             }, 2500);
         }
+            
+        //if (numList.includes(scores[0].word)) {
+        //    const idnum = numList.findIndex(numind => numind===scores[0].word);
+        //    document.getElementById(`td${idnum}`).style.backgroundColor = "#F5F5F5";
+            // And we highlight the word with the highest score
+        //    const elementId = `word-${scores[0].word}`;
+        //    console.log("Class ID",`word-${scores[0].word}`);
+        //    document.getElementById(elementId).classList.add('active');
+                
+            // This is just for removing the highlight after 2.5 seconds
+        //    setTimeout(() => {
+        //        document.getElementById(elementId).classList.remove('active');
+        //    }, 2500);
+        //}
     }, 
     {
         probabilityThreshold: 0.70
