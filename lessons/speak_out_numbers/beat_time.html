@@ -11,11 +11,14 @@
     <script>
         var seconds = 0;
         var el = document.getElementById('seconds-counter');
-
+        var data = [ {index: "Seconds", value: 0} ];
+        
         function incrementSeconds() {
             seconds += 1;
             if (el) {
                 el.innerText = "You have been here for " + seconds + " seconds.";
+                data[0].value=seconds;
+                
             }
         }
 
@@ -26,7 +29,7 @@
         //{ index: 1, value: 100 },
         //{ index: 2, value: 150 },
         //];
-        const data = [ {index: "Seconds", value: seconds} ]
+        
 
         // Get a surface
         const surface = tfvis.visor().surface({ name: 'Barchart', tab: 'Charts' });
