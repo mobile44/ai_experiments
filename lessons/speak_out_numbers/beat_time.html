@@ -179,6 +179,31 @@
                         showElement.classList.add('show');
                         startListening();
                     }
+                    function startListening() {
+                        recognizer.listen(({scores}) => {
+                        scores = Array.from(scores).map((s, i) => ({score: s, word: words[i]}));
+                        console.log("Score:",scores);
+                        scores.sort((s1, s2) => s2.score - s1.score);
+                        console.log("Score sorted: ",scores);
+                        if (gameList[0]===scores[0].word) {
+                            gameList.splice(0,1);
+                            console.log("GameList:",gameList);
+                            const idnum = numList.findIndex(numind => numind===scores[0].word);
+                            document.getElementById(`td${idnum}`).style.backgroundColor = "#F5F5F5";
+                        }
+                    }, 
+                    {
+                        probabilityThreshold: 0.70
+                    });
+                    }       
+                    function stopListening(){
+                        recognizer.stopListening();
+                        startOver();
+                    }
+
+                    function startOver() {
+                        location.reload();
+                    }
                     setInterval(showTime, 1000); 
                     function showTime() { 
                         let time = new Date(); 
