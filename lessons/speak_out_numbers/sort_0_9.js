@@ -110,6 +110,7 @@ function startListening() {
         
 function stopListening(){
     recognizer.stopListening();
+    startOver();
 }
 
 function startOver() {
