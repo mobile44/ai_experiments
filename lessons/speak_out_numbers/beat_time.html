@@ -152,7 +152,6 @@
                     document.addEventListener('DOMContentLoaded', () => {
                         for (j=0; j<numList.length; j++) {
                                 var idname = `td${j}`;
-                                console.log("IDNAME:",idname);
                                 var wrapper = document.getElementById(idname);
                                 wrapper.innerHTML = numList[j];
                         }
@@ -174,7 +173,6 @@
                         recognizer = speechCommands.create("BROWSER_FFT");  
                         await recognizer.ensureModelLoaded()           
                         words = recognizer.wordLabels();
-                        console.log("Words: ", words);
                         modelLoaded = true;            
                         showElement.classList.add('show');
                         startListening();
@@ -182,12 +180,9 @@
                     function startListening() {
                         recognizer.listen(({scores}) => {
                         scores = Array.from(scores).map((s, i) => ({score: s, word: words[i]}));
-                        console.log("Score:",scores);
                         scores.sort((s1, s2) => s2.score - s1.score);
-                        console.log("Score sorted: ",scores);
                         if (gameList[0]===scores[0].word) {
                             gameList.splice(0,1);
-                            console.log("GameList:",gameList);
                             const idnum = numList.findIndex(numind => numind===scores[0].word);
                             document.getElementById(`td${idnum}`).style.backgroundColor = "#F5F5F5";
                         }
