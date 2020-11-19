@@ -91,6 +91,7 @@ function startListening() {
         
         if (gameList[0]===scores[0].word) {
             gameList.splice(0,1);
+            console.log("GameList:",gameList);
             const idnum = numList.findIndex(numind => numind===scores[0].word);
             document.getElementById(`td${idnum}`).style.backgroundColor = "#F5F5F5";
             // And we highlight the word with the highest score
