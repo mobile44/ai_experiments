@@ -142,7 +142,32 @@
                 <div id="clock">8:10:45</div>
                 <div id="starttime"></div>
                 <div><button onclick="timesnapshot()">Timer</button>
-                <script> 
+                <script>
+                    let recognizer;
+                    let words;
+                    const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine", "yes", "no", "up", "down", "left", "right", "stop", "go"];
+                    const numList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
+                    const gameList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
+                    document.addEventListener('DOMContentLoaded', () => {
+                        for (j=0; j<numList.length; j++) {
+                                var idname = `td${j}`;
+                                console.log("IDNAME:",idname);
+                                var wrapper = document.getElementById(idname);
+                                wrapper.innerHTML = numList[j];
+                        }
+                        document.getElementById("audioswitch").addEventListener('change', (event) => {
+                            if(event.target.checked) {
+                                if(modelLoaded) {
+                                    startListening();
+                                }else{
+                                    loadModel();
+                                }
+                            } else {
+                                stopListening();
+                            }   
+                        });
+                    });
+                    let modelLoaded = false;
                     setInterval(showTime, 1000); 
                     function showTime() { 
                         let time = new Date(); 
