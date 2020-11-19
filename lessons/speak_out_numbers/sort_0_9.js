@@ -111,3 +111,7 @@ function startListening() {
 function stopListening(){
     recognizer.stopListening();
 }
+
+function startOver() {
+    location.reload();
+}
