@@ -61,7 +61,8 @@
                         document.getElementById("clock").innerHTML = currentTime; 
                     }
                     function timesnapshot() {
-                        document.getElementByID("starttime").innerHTML=document.getElementById("clock").innerHTML;
+                        const st =document.getElementById("clock").innerHTML;
+                        console.log("Time:",st)
                     }
                     showTime(); 
                 </script>
