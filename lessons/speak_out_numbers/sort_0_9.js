@@ -89,7 +89,7 @@ function startListening() {
         scores.sort((s1, s2) => s2.score - s1.score);
         console.log("Score sorted: ",scores);
         
-        if (gameList===scores[0].word) {
+        if (gameList[0]===scores[0].word) {
             gameList.splice(0,1);
             const idnum = numList.findIndex(numind => numind===scores[0].word);
             document.getElementById(`td${idnum}`).style.backgroundColor = "#F5F5F5";
