@@ -6,6 +6,16 @@
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
 <script src="https://unpkg.com/@tensorflow-models/speech-commands"></script>
 <script>
+var seconds = 0;
+var el = document.getElementById('seconds-counter');
+
+function incrementSeconds() {
+    seconds += 1;
+    el.innerText = "You have been here for " + seconds + " seconds.";
+}
+
+var cancel = setInterval(incrementSeconds, 1000);
+
 const data = [
   { index: 0, value: 50 },
   { index: 1, value: 100 },
@@ -20,6 +30,6 @@ tfvis.render.barchart(surface, data, {});
 </script>
 </head>
 <body>
-tensorflow vision
+<div id='seconds-counter'> </div>
 </body>
 </html>
