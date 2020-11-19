@@ -2,7 +2,7 @@ let recognizer;
 let words;
 const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine", "yes", "no", "up", "down", "left", "right", "stop", "go"];
 const numList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
-var gameList = [...numList];
+const gameList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
 let modelLoaded = false;
         
 document.addEventListener('DOMContentLoaded', () => {
