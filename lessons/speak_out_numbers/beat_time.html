@@ -9,6 +9,8 @@
         <div id='seconds-counter'> </div>
     </body>
     <script>
+        const surface = tfvis.visor().surface({ name: 'Barchart', tab: 'Charts' });
+        
         var seconds = 0;
         var el = document.getElementById('seconds-counter');
         var data = [ {index: "Seconds", value: 0} ];
@@ -18,23 +20,10 @@
             if (el) {
                 el.innerText = "You have been here for " + seconds + " seconds.";
                 data[0].value=seconds;
+                tfvis.render.barchart(surface, data, {});
                 
             }
         }
-
         var cancel = setInterval(incrementSeconds, 1000);
-
-        //const data = [
-        //{ index: 0, value: 50 },
-        //{ index: 1, value: 100 },
-        //{ index: 2, value: 150 },
-        //];
-        
-
-        // Get a surface
-        const surface = tfvis.visor().surface({ name: 'Barchart', tab: 'Charts' });
-
-        // Render a barchart on that surface
-        tfvis.render.barchart(surface, data, {});
     </script>
 </html>
