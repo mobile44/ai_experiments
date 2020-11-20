@@ -202,18 +202,13 @@
                         if (gameList.length===0) {
                             timesnapshot();
                             var h1=document.getElementById("starttime").innerText.substring(0,2);
-                            console.log("H1:",h1);
                             var h2=document.getElementById("endtime").innerText.substring(0,2);
-                            console.log("H2:",h2);
                             var m1=document.getElementById("starttime").innerText.substring(3,5);
-                            console.log("M1:",m1);
                             var m2=document.getElementById("endtime").innerText.substring(3,5);
-                            console.log("M2:",m2);
                             var s1=document.getElementById("starttime").innerText.substring(6,8);
-                            console.log("S1:",s1);
                             var s2=document.getElementById("endtime").innerText.substring(6,8);
-                            console.log("S2:",s2);
-                            //const result=stopCount-startCount;
+                            var t1=document.getElementById("starttime").innerText.substring(9,11);
+                            var t2=document.getElementById("endtime").innerText.substring(9,11);
                             document.getElementById("resulttime").innerHTML = `${h1}${m1}${s1}-${h2}${m2}${s2}`;
                         }
                     }, 
