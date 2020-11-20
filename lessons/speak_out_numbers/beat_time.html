@@ -141,6 +141,8 @@
             <div class="right-half">
                 <div id="clock">8:10:45</div>
                 <div id="starttime"></div>
+                <div id="endtime"></div>
+                <div id="resulttime"></div>
                 <div><button onclick="timesnapshot()">Timer</button>
                 <script>
                     let recognizer;
@@ -149,6 +151,8 @@
                     const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine", "yes", "no", "up", "down", "left", "right", "stop", "go"];
                     const numList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
                     const gameList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
+                    const startCount = 0;
+                    const stopCount = 0;
                     document.addEventListener('DOMContentLoaded', () => {
                         for (j=0; j<numList.length; j++) {
                                 var idname = `td${j}`;
@@ -175,6 +179,7 @@
                         words = recognizer.wordLabels();
                         modelLoaded = true;            
                         showElement.classList.add('show');
+                        timesnapshot();
                         startListening();
                     }
                     function startListening() {
@@ -185,6 +190,13 @@
                             gameList.splice(0,1);
                             const idnum = numList.findIndex(numind => numind===scores[0].word);
                             document.getElementById(`td${idnum}`).style.backgroundColor = "#F5F5F5";
+                        }
+                        if (gameList.length===0) {
+                            timesnapshot();
+                            if ((startCount!=0) && (stopCount!=0)) {
+                                const result=stopCount-startCount;
+                                document.getElementById("result").innerHTML = result;
+                            }
                         }
                     }, 
                     {
@@ -221,7 +233,14 @@
                         document.getElementById("clock").innerHTML = currentTime; 
                     }
                     function timesnapshot() {
-                        document.getElementById("starttime").innerHTML =document.getElementById("clock").innerText;
+                        var currenttime = document.getElementById("clock").innerText;
+                        if (startCount===0) {
+                            startCount=currenttime;
+                            document.getElementById("starttime").innerHTML = startCount;
+                        } else {
+                            stopCount=currenttime;
+                            document.getElementById("endtime").innerHTML = stopCount;
+                        }
                     }
                     showTime(); 
                 </script>
