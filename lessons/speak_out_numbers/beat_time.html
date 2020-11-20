@@ -244,10 +244,12 @@
                         var currenttime = document.getElementById("clock").innerText;
                         if (startCount===0) {
                             startCount=currenttime;
-                            document.getElementById("starttime").innerHTML = startCount;
+                            const timeStart = startCount;
+                            document.getElementById("starttime").innerHTML = timeStart;
                         } else {
                             stopCount=currenttime;
-                            document.getElementById("endtime").innerHTML = stopCount;
+                            const timeEnd = stopCount;
+                            document.getElementById("endtime").innerHTML = timeEnd;
                         }
                     }
                     showTime(); 
