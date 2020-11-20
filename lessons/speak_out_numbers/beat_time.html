@@ -201,10 +201,16 @@
                         }
                         if (gameList.length===0) {
                             timesnapshot();
-                            /*if ((startCount!=0) && (stopCount!=0)) {
-                                const result=stopCount-startCount
-                                document.getElementById("resulttime").innerHTML = result;
-                            }*/
+                            if ((startCount!=0) && (stopCount!=0)) {
+                                var h1=timeStart(0,2);
+                                var h2=timeEnd(0,2);
+                                var m1=timeStart(3,5);
+                                var m2=timeEnd(3,5);
+                                var s1=timeStart(6,8);
+                                var s2=timeEnd(6,8);
+                                //const result=stopCount-startCount;
+                                document.getElementById("resulttime").innerHTML = `${h1}${m1}${s1},${h2}${m2}${s2}`;
+                            }
                         }
                     }, 
                     {
