@@ -160,6 +160,7 @@
                     let recognizer;
                     let words;
                     let modelLoaded = false;
+                    let time;
                     const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine", "yes", "no", "up", "down", "left", "right", "stop", "go"];
                     const numList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
                     const gameList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
@@ -230,8 +231,9 @@
                         location.reload();
                     }
                     setInterval(showTime, 1000); 
-                    function showTime() { 
-                        let time = new Date(); 
+                    function showTime() {
+                        time = new Date();
+                        //let time = new Date(); 
                         let hour = time.getHours(); 
                         let min = time.getMinutes(); 
                         let sec = time.getSeconds(); 
