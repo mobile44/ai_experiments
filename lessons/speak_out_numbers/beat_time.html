@@ -208,18 +208,18 @@
                         }
                         if (gameList.length===0) {
                             timesnapshot();
-                            var h1=document.getElementById("starttime").innerText.substring(0,2);
+                            /*var h1=document.getElementById("starttime").innerText.substring(0,2);
                             var h2=document.getElementById("endtime").innerText.substring(0,2);
                             var m1=document.getElementById("starttime").innerText.substring(3,5);
                             var m2=document.getElementById("endtime").innerText.substring(3,5);
                             var s1=document.getElementById("starttime").innerText.substring(6,8);
                             var s2=document.getElementById("endtime").innerText.substring(6,8);
                             var t1=document.getElementById("starttime").innerText.substring(8);
-                            var t2=document.getElementById("endtime").innerText.substring(8);
+                            var t2=document.getElementById("endtime").innerText.substring(8);*/
                             var timediff = (time2-time1)/1000;                            
-                            document.getElementById("resulttime").innerHTML = `${timediff}`;
+                            document.getElementById("resulttime").innerHTML = `${timediff} seconds`;
                         }
-                    }, 
+                    },  s
                     {
                         probabilityThreshold: 0.70
                     });
