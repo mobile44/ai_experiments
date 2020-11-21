@@ -161,6 +161,8 @@
                     let words;
                     let modelLoaded = false;
                     let time;
+                    let time1;
+                    let time2;
                     const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine", "yes", "no", "up", "down", "left", "right", "stop", "go"];
                     const numList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
                     const gameList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
@@ -257,13 +259,13 @@
                         if (startCount===0) {
                             startCount=currenttime;
                             const timeStart = startCount;
-                            const time1=time;
+                            time1=time;
                             document.getElementById("starttime").innerHTML = timeStart;
                         } else {
                             if (stopCount===0) {
                                 stopCount=currenttime;
                                 const timeEnd = stopCount;
-                                const time2=time;
+                                time2=time;
                                 document.getElementById("endtime").innerHTML = timeEnd;
                             }
                         }
