@@ -35,6 +35,10 @@
                 font-size: 20px;
                 text-align: center;
             }
+            #result {
+                font-size: 20px;
+                text-align: center;
+            }
             .header {
                 padding: 50px;
                 margin-bottom: 10px;
@@ -209,7 +213,8 @@
                             var s2=document.getElementById("endtime").innerText.substring(6,8);
                             var t1=document.getElementById("starttime").innerText.substring(8);
                             var t2=document.getElementById("endtime").innerText.substring(8);
-                            document.getElementById("resulttime").innerHTML = `${h1}${m1}${s1}${t1}-${h2}${m2}${s2}${t2}`;
+                            var timediff = (time2-time1)/1000;                            
+                            document.getElementById("resulttime").innerHTML = `${timediff}`;
                         }
                     }, 
                     {
@@ -250,11 +255,13 @@
                         if (startCount===0) {
                             startCount=currenttime;
                             const timeStart = startCount;
+                            const time1=time;
                             document.getElementById("starttime").innerHTML = timeStart;
                         } else {
                             if (stopCount===0) {
                                 stopCount=currenttime;
                                 const timeEnd = stopCount;
+                                const time2=time;
                                 document.getElementById("endtime").innerHTML = timeEnd;
                             }
                         }
