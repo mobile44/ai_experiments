@@ -60,7 +60,8 @@
     </head>  
     <body>
         <h1>Multiple object detection using pre trained model in TensorFlow.js</h1>
-        <p>Wait for the model to load before clicking the button to enable the webcam - at which point it will become visible to use.</p>   
+        <p>Wait for the model to load before clicking the button to enable the webcam - at which point it will become visible to use.</p>  
+        <div><button id="disableButton" onclick="disableCam()">Disable Webcam</button></div>
         <section id="demos" class="invisible">
             <p>Hold some objects up close to your webcam to get a real-time classification! When ready click "enable webcam" below and accept access to the webcam when the browser asks (check the top left of your window)</p>      
             <div id="liveView" class="camView">
@@ -68,7 +69,6 @@
                 <video id="webcam" autoplay width="640" height="480"></video>
             </div>
         </section>
-        <div><button id="disableButton" onclick="disableCam()">Disable Webcam</button></div>
         <!-- Import the page's JavaScript to do some stuff -->
         <!--<script src="script.js" defer></script>-->
         <script>
