@@ -91,7 +91,7 @@
             }
             function disableCam() {
                 const params = {
-                    video: false
+                    video: true
                 };
                 navigator.mediaDevices.getUserMedia(params).then(function(stream) {
                     video.srcObject = null;
