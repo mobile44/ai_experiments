@@ -67,6 +67,7 @@
                 <button id="webcamButton">Enable Webcam</button>
                 <video id="webcam" autoplay width="640" height="480"></video>
             </div>
+            <div><button id="disableButton" onclick="disableCam()">Disable Webcam<button>
         </section>   
         <!-- Import the page's JavaScript to do some stuff -->
         <!--<script src="script.js" defer></script>-->
@@ -87,6 +88,9 @@
                 enableWebcamButton.addEventListener('click', enableCam);
             } else {
                 console.warn('getUserMedia() is not supported by your browser');
+            }
+            function disableCam() {
+                navigator.mediaDevices.getUserMedia({video:false});
             }
             // Placeholder function for next step. Paste over this in the next step.
             function enableCam(event) {
