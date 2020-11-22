@@ -90,7 +90,10 @@
                 console.warn('getUserMedia() is not supported by your browser');
             }
             function disableCam() {
-                navigator.mediaDevices.getUserMedia({video: false});
+                const params = {
+                    video: false
+                };
+                navigator.mediaDevices.getUserMedia(params);
             }
             // Placeholder function for next step. Paste over this in the next step.
             function enableCam(event) {
