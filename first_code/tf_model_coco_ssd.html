@@ -93,7 +93,9 @@
                 const params = {
                     video: false
                 };
-                navigator.mediaDevices.getUserMedia(params);
+                navigator.mediaDevices.getUserMedia(params).then(function(stream) {
+                    video.srcObject = null;
+                });
             }
             // Placeholder function for next step. Paste over this in the next step.
             function enableCam(event) {
