@@ -90,7 +90,7 @@
                 console.warn('getUserMedia() is not supported by your browser');
             }
             function disableCam() {
-                webcam.pause();
+                video.srcObject = null;
             }
             // Placeholder function for next step. Paste over this in the next step.
             function enableCam(event) {
@@ -106,7 +106,6 @@
                 };
                 // Activate the webcam stream.
                 navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
-                    webcam.src = window.URL.createObjectURL(stream);
                     video.srcObject = stream;
                     video.addEventListener('loadeddata', predictWebcam);
                 });
