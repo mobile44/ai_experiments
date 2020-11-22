@@ -138,10 +138,13 @@
                     for (let n = 0; n < predictions.length; n++) {
                         // If we are over 66% sure we are sure we classified it right, draw it!
                         if (predictions[n].score > 0.66) {
+                            var dw = predictions[n].bbox[1];
+                            var dh = predictions[n].bbox[2];
+                            var distancei = (2 * 3.14 * 180) / (dw + dh * 360) * 1000 + 3;
                             const p = document.createElement('p');
                             p.innerText = predictions[n].class  + ' - with ' 
                             + Math.round(parseFloat(predictions[n].score) * 100) 
-                            + '% confidence.' + 'Width: ' + predictions[n].bbox[1];
+                            + '% confidence.' + 'Distance: ' + distancei;
                             p.style = 'margin-left: ' + predictions[n].bbox[0] + 'px; margin-top: '
                             + (predictions[n].bbox[1] - 10) + 'px; width: ' 
                             + (predictions[n].bbox[2] - 10) + 'px; top: 0; left: 0;';
