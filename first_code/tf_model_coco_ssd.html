@@ -90,6 +90,7 @@
                 console.warn('getUserMedia() is not supported by your browser');
             }
             function disableCam() {
+                window.cancelAnimationFrame;
                 video.removeEventListener('loadeddata', predictWebcam, true);
                 const params = {
                     video: true
