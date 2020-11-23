@@ -2,5 +2,14 @@
     <head><title>Local video playback</title></head>
     <body>
         <video id="localVideo" autoplay playsinline controls="false"></video>
+                <script>
+            function getConnectedDevices(type, callback) {
+                navigator.mediaDevices.enumerateDevices()
+                    .then(devices => {
+                        const filtered = devices.filter(device => device.kind === type);
+                        callback(filtered);
+                    });
+            }
+            getConnectedDevices('videoinput', cameras => console.log('Cameras found', cameras));
     </body>
 </html>
