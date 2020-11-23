@@ -1,19 +1,28 @@
 <html>
     <head><title>Local video playback</title></head>
+    <style>
+        .camon {
+            display: none;
+        }
+    </style>
     <body>
         <video id="localVideo" autoplay playsinline controls="false"></video>
-        <button onclick="stopCam()">Stop Camera</button>
+        <button class="camon" onclick="stopCam()">Stop Camera</button>
         <script>
+            var camon
             const constraints = {
                 video: true,
             };
             const video = document.querySelector("video");
             navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
                 video.srcObject = stream;
+                document.getElementsByClassName('camon').style.display="block";
             });
             function stopCam() {
                 video.pause();
                 video.srcObject = null;
+                document.getElementsByClassName('camon').style.display="none";
+                location.reload();
             }
         </script>
     </body>
