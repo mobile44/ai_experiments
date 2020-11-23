@@ -20,14 +20,12 @@
             const video = document.querySelector("video");
             navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
                 video.srcObject = stream;
-                //document.getElementsByClassName('camon').style.display="block";
             });
             function stopCam() {
-                document.getElementsByClassName('camon').style.display="none";
-                document.getElementsByClassName('status').style.display="block";
                 video.pause();
                 video.srcObject = null;               
-                //location.reload();
+                document.getElementsByClassName('camon').style.display="none";
+                document.getElementsByClassName('status').style.display="block";
             }
             function reloadSite() {
                 location.reload();
