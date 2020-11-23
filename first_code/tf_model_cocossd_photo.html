@@ -1,10 +1,10 @@
 <html>
     <head><title>Local video playback</title></head>
     <style>
-        .camon {
+        #camon {
             display: block;
         }
-        .status {
+        #status {
             display: none;
         }
     </style>
@@ -24,8 +24,8 @@
             function stopCam() {
                 video.pause();
                 video.srcObject = null;               
-                document.getElementsByClassName('camon').style.display="none";
-                document.getElementsByClassName('status').style.display="block";
+                document.getElementByID('camon').style.display="none";
+                document.getElementByID('status').style.display="block";
             }
             function reloadSite() {
                 location.reload();
