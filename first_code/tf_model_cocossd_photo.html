@@ -17,8 +17,8 @@
                 return devices.filter(device => device.kind === type)
             }
 
-            const videoCameras = getConnectedDevices('videoinput');
-            console.log('Cameras found:', videoCameras);
+            //const videoCameras = getConnectedDevices('videoinput');
+            //console.log('Cameras found:', videoCameras);
             
             // Updates the select element with the provided set of cameras
             function updateCameraList(cameras) {
@@ -40,6 +40,7 @@
             // Get the initial set of cameras connected
             const videoCameras = getConnectedDevices('videoinput');
             updateCameraList(videoCameras);
+            console.log('Cameras found:', videoCameras);
 
             // Listen for changes to media devices and update the list accordingly
             navigator.mediaDevices.addEventListener('devicechange', event => {
