@@ -34,7 +34,9 @@
                 // detect objects in the image.
                 model.detect(img).then(predictions => {
                     console.log('Predictions: ', predictions);
-                    console.log("Class:",predictions[0].class);
+                    for (i=0; i<predictions.length; i++) {
+                        console.log("Class:",predictions[i].class);
+                    }
                 });
             });
             function stopCam() {
