@@ -4,10 +4,14 @@
         .camon {
             display: block;
         }
+        .status {
+            display: none;
+        }
     </style>
     <body>
         <video id="localVideo" autoplay playsinline controls="false"></video>
         <button class="camon" onclick="stopCam()">Stop Camera</button>
+        <button class="status" onclick="reloadSite()">Reload</button>
         <script>
             var camon
             const constraints = {
@@ -19,10 +23,14 @@
                 //document.getElementsByClassName('camon').style.display="block";
             });
             function stopCam() {
-                //document.getElementsByClassName('camon').style.display="none";
+                document.getElementsByClassName('camon').style.display="none";
+                document.getElementsByClassName('status').style.display="block";
                 video.pause();
                 video.srcObject = null;               
                 //location.reload();
+            }
+            function reloadSite() {
+                location.reload();
             }
         </script>
     </body>
