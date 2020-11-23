@@ -33,7 +33,7 @@
             cocoSsd.load().then(model => {
                 // detect objects in the image.
                 model.detect(img).then(predictions => {
-                    let arrByID = arr.filter(filterByID);
+                    let arrByID = predictions.filter(filterByID);
                     console.log("Person: ",arrByID.length);
                     console.log('Predictions: ', predictions);
                     for (i=0; i<predictions.length; i++) {
