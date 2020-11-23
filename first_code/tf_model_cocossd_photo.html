@@ -2,26 +2,5 @@
     <head><title>Local video playback</video></head>
     <body>
         <video id="localVideo" autoplay playsinline controls="false"/>
-        <script>
-            function getConnectedDevices(type, callback) {
-                navigator.mediaDevices.enumerateDevices()
-                    .then(devices => {
-                        const filtered = devices.filter(device => device.kind === type);
-                        callback(filtered);
-                    });
-            }
-            getConnectedDevices('videoinput', cameras => console.log('Cameras found', cameras));
-            /*const constraints = {
-                'video': true,
-                'audio': true
-            }
-            navigator.mediaDevices.getUserMedia(constraints)
-                .then(stream => {
-                    console.log('Got MediaStream:', stream);
-                })
-                .catch(error => {
-                    console.error('Error accessing media devices.', error);
-                });*/
-        </script>
     </body>
 </html>
