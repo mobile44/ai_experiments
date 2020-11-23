@@ -33,6 +33,8 @@
             cocoSsd.load().then(model => {
                 // detect objects in the image.
                 model.detect(img).then(predictions => {
+                    let arrByID = arr.filter(filterByID);
+                    console.log("Person: ",arrByID.length);
                     console.log('Predictions: ', predictions);
                     for (i=0; i<predictions.length; i++) {
                         console.log("Class:",predictions[i].class);
@@ -47,6 +49,13 @@
             }
             function reloadSite() {
                 location.reload();
+            }
+            function filterByID(item) {
+                if (item.class === "person") {
+                    return true;    
+                } 
+                invalidEntries++
+                return false;
             }
         </script>
     </body>
