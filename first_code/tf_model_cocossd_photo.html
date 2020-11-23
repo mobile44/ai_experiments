@@ -15,6 +15,7 @@
         }
     </style>
     <body>
+        <image id='jpg' src='./images/000000000769.jpg'>Persons</image>
         <video id="localVideo" autoplay playsinline controls="false"></video>
         <button id="camon" onclick="stopCam()">Stop Camera</button>
         <button id="status" onclick="reloadSite()">Reload</button>
@@ -26,6 +27,14 @@
             const video = document.querySelector("video");
             navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
                 video.srcObject = stream;
+            });
+            const img = document.getElementById('jpg');
+            // Load the model.
+            cocoSsd.load().then(model => {
+                // detect objects in the image.
+                model.detect(img).then(predictions => {
+                    console.log('Predictions: ', predictions);
+                });
             });
             function stopCam() {
                 video.pause();
