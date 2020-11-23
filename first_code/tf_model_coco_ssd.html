@@ -61,7 +61,7 @@
     <body>
         <h1>Multiple object detection using pre trained model in TensorFlow.js</h1>
         <p>Wait for the model to load before clicking the button to enable the webcam - at which point it will become visible to use.</p>  
-        <div><button id="disableButton" onclick="disableCam()">Disable Webcam</button></div>
+        <!--<div><button id="disableButton" onclick="disableCam()">Disable Webcam</button></div>-->
         <section id="demos" class="invisible">
             <p>Hold some objects up close to your webcam to get a real-time classification! When ready click "enable webcam" below and accept access to the webcam when the browser asks (check the top left of your window)</p>      
             <div id="liveView" class="camView">
@@ -89,7 +89,7 @@
             } else {
                 console.warn('getUserMedia() is not supported by your browser');
             }
-            function disableCam() {
+            /*function disableCam() {
                 window.stop();
                 window.cancelAnimationFrame(predictWebcam);
                 video.removeEventListener('loadeddata', predictWebcam, true);
@@ -99,7 +99,7 @@
                 navigator.mediaDevices.getUserMedia(params).then(function(stream) {
                     video.srcObject = null;
                 });
-            }
+            }*/
             // Placeholder function for next step. Paste over this in the next step.
             function enableCam(event) {
                 // Only continue if the COCO-SSD has finished loading.
