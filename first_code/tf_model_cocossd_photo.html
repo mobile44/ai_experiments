@@ -69,6 +69,7 @@
             var canvas = null;
             var photo = null;
             var startbutton = null;
+            const st;
             function startup() {
                 video = document.getElementById('video');
                 canvas = document.getElementById('canvas');
@@ -80,7 +81,7 @@
                     })
                     .then(function(stream) {
                         video.srcObject = stream;
-                        const st = video.srcObject;
+                        st = video.srcObject;
                         video.play();
                     })
                     .catch(function(err) {
