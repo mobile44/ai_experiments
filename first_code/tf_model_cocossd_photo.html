@@ -37,8 +37,8 @@
                 return false;
             }
             function countPeople() {
-                document.getElementById('webimg').crossOrigin = "anonymous";
-                const img = document.getElementById('webimg');
+                //document.getElementById('webimg').crossOrigin = "anonymous";
+                const img = document.getElementById('jpg');
                 cocoSsd.load().then(model => {
                     // detect objects in the image.
                     model.detect(img).then(predictions => {
