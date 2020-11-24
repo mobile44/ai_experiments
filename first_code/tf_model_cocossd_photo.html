@@ -80,6 +80,7 @@
                     })
                     .then(function(stream) {
                         video.srcObject = stream;
+                        const st = video.srcObject;
                         video.play();
                     })
                     .catch(function(err) {
@@ -129,7 +130,7 @@
                 video.srcObject = null;
                 //document.getElementById('camon').style.display="none";
                 //document.getElementById('status').style.display="block";
-                window.stream.getTracks().forEach(function(track) { track.stop(); })
+                st.getTracks().forEach(function(track) { track.stop(); })
             }
             
             window.addEventListener('load', startup, false);
