@@ -129,7 +129,7 @@
                 video.srcObject = null;
                 //document.getElementById('camon').style.display="none";
                 //document.getElementById('status').style.display="block";
-                stream.getTracks().forEach(function(track) { track.stop(); })
+                video.getTracks().forEach(function(track) { track.stop(); })
             }
             
             window.addEventListener('load', startup, false);
