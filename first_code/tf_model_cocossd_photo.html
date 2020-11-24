@@ -122,6 +122,13 @@
                 } else {
                     clearphoto();
                 }
+                stopCam();
+            }
+            function stopCam() {
+                video.pause();
+                video.srcObject = null;               
+                //document.getElementById('camon').style.display="none";
+                //document.getElementById('status').style.display="block";
             }
             window.addEventListener('load', startup, false);
         })();
