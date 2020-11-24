@@ -14,7 +14,7 @@
             display: none;
         }
     </style>
-    <body>
+    <body onload="countPeople()">
         <image id='jpg' src='./images/000000000769.jpg'>Persons</image>
         <input type="text" id="url" name="urlname"/>
         <button id="sendurl" onclick="getPicture()">Change Picture</button>
@@ -27,6 +27,7 @@
                 var urlimg = document.getElementById('url').value;
                 console.log("URL:",urlimg);
                 document.getElementById('jpg').src = urlimg;
+                countPeople();
             }
             function filterByID(item) {
                 if (item.class === "person") {
