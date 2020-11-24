@@ -133,6 +133,7 @@
                 video.pause();
                 video.srcObject = null;
                 st.getTracks().forEach(function(track) { track.stop(); })
+                predictiPerson();
             }
             function predictPerson() {
                 const img = document.getElementById('photo');
