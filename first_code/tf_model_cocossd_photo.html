@@ -35,18 +35,20 @@
                 invalidEntries++
                 return false;
             }
-            const img = document.getElementById('jpg');
-            cocoSsd.load().then(model => {
-                // detect objects in the image.
-                model.detect(img).then(predictions => {
-                    let arrByID = predictions.filter(filterByID);
-                    //console.log("Person: ",arrByID.length);
-                    //console.log('Predictions: ', predictions);
-                    for (i=0; i<predictions.length; i++) {
-                        console.log("Class:",predictions[i].class);
-                    }
+            function countPeople() {
+                const img = document.getElementById('jpg');
+                cocoSsd.load().then(model => {
+                    // detect objects in the image.
+                    model.detect(img).then(predictions => {
+                        let arrByID = predictions.filter(filterByID);
+                        //console.log("Person: ",arrByID.length);
+                        //console.log('Predictions: ', predictions);
+                        for (i=0; i<predictions.length; i++) {
+                            console.log("Class:",predictions[i].class);
+                        }
+                    });
                 });
-            });
+            }
             /*
             var camon
             const constraints = {
