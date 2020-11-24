@@ -37,7 +37,7 @@
                 return false;
             }
             function countPeople() {
-                const img = document.getElementById('jpg');
+                const img = document.getElementById('webimg');
                 cocoSsd.load().then(model => {
                     // detect objects in the image.
                     model.detect(img).then(predictions => {
