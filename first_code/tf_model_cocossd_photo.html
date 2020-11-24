@@ -42,6 +42,9 @@
                 text-align: center;
             }
         </style>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
         <title>My Favorite Sport</title>
     </head>
     <body>
@@ -129,11 +132,29 @@
             function stopCam() {
                 video.pause();
                 video.srcObject = null;
-                //document.getElementById('camon').style.display="none";
-                //document.getElementById('status').style.display="block";
                 st.getTracks().forEach(function(track) { track.stop(); })
             }
-            
+            function predictPerson() {
+                const img = document.getElementById('photo');
+                cocoSsd.load().then(model => {
+                    model.detect(img).then(predictions => {
+                        let arrByID = predictions.filter(filterByID);
+                        document.getElementById('canvas').innerHTML = arrByID.length;
+                        //console.log("Person: ",arrByID.length);
+                        //console.log('Predictions: ', predictions);
+                        //for (i=0; i<predictions.length; i++) {
+                        //    console.log("Class:",predictions[i].class);
+                        //}
+                    });
+                });
+            }
+            function filterByID(item) {
+                if (item.class === "person") {
+                    return true;    
+                } 
+                invalidEntries++
+                return false;
+            }
             window.addEventListener('load', startup, false);
         })();
     </script>
