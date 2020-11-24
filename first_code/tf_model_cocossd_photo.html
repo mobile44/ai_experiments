@@ -141,7 +141,7 @@
                 cocoSsd.load().then(model => {
                     model.detect(img).then(predictions => {
                         let arrByID = predictions.filter(filterByID);
-                        document.getElementById('peopleCount').innerHTML = arrByID.length;
+                        document.getElementById('peopleCount').innerHTML = `People Count: ${arrByID.length}`;
                         //console.log("Person: ",arrByID.length);
                         //console.log('Predictions: ', predictions);
                         //for (i=0; i<predictions.length; i++) {
