@@ -24,7 +24,7 @@
         <!--<button id="status" onclick="reloadSite()">Reload</button>-->
         <script>
             function getPicture() {
-                var urlimg = document.getElementById('url');
+                var urlimg = document.getElementById('url').value;
                 console.log("URL:",urlimg);
                 document.getElementById('jpg').src = urlimg;
             }
