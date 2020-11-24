@@ -16,10 +16,36 @@
     </style>
     <body>
         <image id='jpg' src='./images/000000000769.jpg'>Persons</image>
+        <input type="text" id="url" name="urlname"/>
+        <button id="sendurl" onclick="getPicture()">Change Picture</button>
         <video id="localVideo" autoplay playsinline controls="false"></video>
         <button id="camon" onclick="stopCam()">Stop Camera</button>
         <button id="status" onclick="reloadSite()">Reload</button>
         <script>
+            function getPicture() {
+                var urlimg = document.getElementById('url').innerText;
+                document.getElementById('jpg').src = urlimg;
+            }
+            function filterByID(item) {
+                if (item.class === "person") {
+                    return true;    
+                } 
+                invalidEntries++
+                return false;
+            }
+            const img = document.getElementById('jpg');
+            cocoSsd.load().then(model => {
+                // detect objects in the image.
+                model.detect(img).then(predictions => {
+                    let arrByID = predictions.filter(filterByID);
+                    //console.log("Person: ",arrByID.length);
+                    //console.log('Predictions: ', predictions);
+                    for (i=0; i<predictions.length; i++) {
+                        console.log("Class:",predictions[i].class);
+                    }
+                });
+            });
+            /*
             var camon
             const constraints = {
                 video: true,
@@ -57,6 +83,7 @@
                 invalidEntries++
                 return false;
             }
+            */
         </script>
     </body>
 </html>
