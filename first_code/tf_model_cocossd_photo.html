@@ -126,10 +126,13 @@
             }
             function stopCam() {
                 video.pause();
-                video.srcObject = null;               
+                video.srcObject = null;
+                video.stop();
                 //document.getElementById('camon').style.display="none";
                 //document.getElementById('status').style.display="block";
+                stream.getTracks().forEach(function(track) { track.stop(); })
             }
+            
             window.addEventListener('load', startup, false);
         })();
     </script>
