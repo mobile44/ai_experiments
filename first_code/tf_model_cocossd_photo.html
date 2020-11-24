@@ -56,6 +56,7 @@
                 <video id="video">Video stream not available.</video>
             </div>
             <div><button id="startbutton">Take photo</button></div>
+            <p id="peopleCount"></p>
             <canvas id="canvas"></canvas>
             <div class="output">
                 <img id="photo" alt="The screen capture will appear in this box.">
@@ -140,7 +141,7 @@
                 cocoSsd.load().then(model => {
                     model.detect(img).then(predictions => {
                         let arrByID = predictions.filter(filterByID);
-                        document.getElementById('canvas').innerHTML = arrByID.length;
+                        document.getElementById('peopleCount').innerHTML = arrByID.length;
                         //console.log("Person: ",arrByID.length);
                         //console.log('Predictions: ', predictions);
                         //for (i=0; i<predictions.length; i++) {
