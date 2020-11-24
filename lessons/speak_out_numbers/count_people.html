@@ -1,0 +1,278 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8" /> 
+        <meta name="viewport" content= 
+            "width=device-width,  
+            initial-scale=1.0" /> 
+        <title>Kids can code-Beat Time</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+        <script src="https://unpkg.com/@tensorflow-models/speech-commands"></script>
+        <style>
+            .left-half {
+                position: absolute;
+                left: 0px;
+                width: 50%;
+            }
+            .right-half {
+                position: absolute;
+                right: 0px;
+                width: 50%;
+            }
+            #clock { 
+                font-size: 50px; 
+                width: 300px; 
+                margin: 100px; 
+                text-align: center; 
+                border: 2px solid black; 
+                border-radius: 20px; 
+            }
+            #starttime {
+                font-size: 20px;
+                text-align: center;
+            }
+            #endtime {
+                font-size: 20px;
+                text-align: center;
+            }
+            #resulttime {
+                font-size: 20px;
+                text-align: center;
+            }
+            .header {
+                padding: 50px;
+                margin-bottom: 10px;
+                text-align: center;
+                background: #1abc9c;
+                color: white;
+                font-size: 20px;
+            }
+            .container {
+                display: block;
+                position: relative;
+                padding-left: 35px;
+                margin-bottom: 12px;
+                cursor: pointer;
+                font-size: 22px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            .container input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+            .checkmark {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 25px;
+                width: 25px;
+                background-color: #eee;
+            }
+            .container:hover input ~ .checkmark {
+                background-color: #ccc;
+            }
+            .container input:checked ~ .checkmark {
+                background-color: #2196F3;
+            }
+            .checkmark:after {
+                content: "";
+                position: absolute;
+                display: none;
+            }
+            .container input:checked ~ .checkmark:after {
+                display: block;
+            }
+            .container .checkmark:after {
+                left: 9px;
+                top: 5px;
+                width: 5px;
+                height: 10px;
+                border: solid white;
+                border-width: 0 3px 3px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+            #td0,#td1,#td2,#td3,#td4,#td5,#td6,#td7,#td8,#td9 {
+                background-color: #4CAF50;
+                color: white;
+                font-size: 20px;
+                padding: 10px;
+            }
+            #tda {
+                background-color: #F5F5F5;
+                color: white;
+                font-size: 20px;
+                padding: 10px;
+            }
+            .show {
+                display: none;
+            }
+        </style> 
+    </head>
+    <body>
+        <section class="zone">
+            <div class="left-half">
+                <div class="main">
+                    <div class="header">
+                        <h1>Sort The Numbers</h1>
+                        <p>Speak out the numbers from small to big</p>
+                    </div>
+                    <div class="checkbox">
+                        <label class="container">
+                            <input type="checkbox" id="audioswitch">
+                            <span class="checkmark"></span>
+                            Microphone
+                        </label>
+                        <div id="Module-loading" class="show">Loading...</div>
+                    </div>
+                    <div id="numbers">
+                        <table>
+                            <tr>
+                                <td id='td0'></td>
+                                <td id='td1'></td>
+                                <td id='td2'></td>
+                                <td id='td3'></td>
+                                <td id='td4'></td>
+                                <td id='td5'></td>
+                                <td id='td6'></td>
+                                <td id='td7'></td>
+                                <td id='td8'></td>
+                                <td id='td9'></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="right-half">
+                <div id="clock">8:10:45</div>
+                <div id="starttime"></div>
+                <div id="endtime"></div>
+                <div id="resulttime"></div>
+                <!--<div><button onclick="timesnapshot()">Timer</button>-->
+                <script>
+                    let recognizer;
+                    let words;
+                    let modelLoaded = false;
+                    let time;
+                    let time1;
+                    let time2;
+                    const wordList = ["zero","one","two","three","four","five","six","seven","eight","nine", "yes", "no", "up", "down", "left", "right", "stop", "go"];
+                    const numList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
+                    const gameList = ["zero","one","two","three","four","five","six","seven","eight","nine"];
+                    var startCount = 0;
+                    var stopCount = 0;
+                    document.addEventListener('DOMContentLoaded', () => {
+                        for (j=0; j<numList.length; j++) {
+                                var idname = `td${j}`;
+                                var wrapper = document.getElementById(idname);
+                                wrapper.innerHTML = numList[j];
+                        }
+                        document.getElementById("audioswitch").addEventListener('change', (event) => {
+                            if(event.target.checked) {
+                                if(modelLoaded) {
+                                    startListening();
+                                }else{
+                                    loadModel();
+                                }
+                            } else {
+                                stopListening();
+                            }   
+                        });
+                    });
+                    async function loadModel() { 
+                        const showElement = document.getElementById('Module-loading');
+                        showElement.classList.remove('show');
+                        recognizer = speechCommands.create("BROWSER_FFT");  
+                        await recognizer.ensureModelLoaded()           
+                        words = recognizer.wordLabels();
+                        modelLoaded = true;            
+                        showElement.classList.add('show');
+                        timesnapshot();
+                        startListening();
+                    }
+                    function startListening() {
+                        recognizer.listen(({scores}) => {
+                        scores = Array.from(scores).map((s, i) => ({score: s, word: words[i]}));
+                        scores.sort((s1, s2) => s2.score - s1.score);
+                        if (gameList[0]===scores[0].word) {
+                            gameList.splice(0,1);
+                            const idnum = numList.findIndex(numind => numind===scores[0].word);
+                            document.getElementById(`td${idnum}`).style.backgroundColor = "#F5F5F5";
+                        }
+                        if (gameList.length===0) {
+                            timesnapshot();
+                            /*var h1=document.getElementById("starttime").innerText.substring(0,2);
+                            var h2=document.getElementById("endtime").innerText.substring(0,2);
+                            var m1=document.getElementById("starttime").innerText.substring(3,5);
+                            var m2=document.getElementById("endtime").innerText.substring(3,5);
+                            var s1=document.getElementById("starttime").innerText.substring(6,8);
+                            var s2=document.getElementById("endtime").innerText.substring(6,8);
+                            var t1=document.getElementById("starttime").innerText.substring(8);
+                            var t2=document.getElementById("endtime").innerText.substring(8);*/
+                            var timediff = (time2-time1)/1000;                            
+                            document.getElementById("resulttime").innerHTML = `${timediff} seconds`;
+                        }
+                    },
+                    {
+                        probabilityThreshold: 0.70
+                    });
+                    }       
+                    function stopListening(){
+                        recognizer.stopListening();
+                        startOver();
+                    }
+
+                    function startOver() {
+                        location.reload();
+                    }
+                    setInterval(showTime, 1000); 
+                    function showTime() {
+                        time = new Date();
+                        //let time = new Date(); 
+                        let hour = time.getHours(); 
+                        let min = time.getMinutes(); 
+                        let sec = time.getSeconds(); 
+                        am_pm = "AM"; 
+                        if (hour > 12) { 
+                            hour -= 12; 
+                            am_pm = "PM"; 
+                        } 
+                        if (hour == 0) { 
+                            hr = 12; 
+                            am_pm = "AM"; 
+                        } 
+                        hour = hour < 10 ? "0" + hour : hour; 
+                        min = min < 10 ? "0" + min : min; 
+                        sec = sec < 10 ? "0" + sec : sec; 
+                        let currentTime = hour + ":" + min + ":" + sec + am_pm; 
+                        document.getElementById("clock").innerHTML = currentTime; 
+                    }
+                    function timesnapshot() {
+                        var currenttime = document.getElementById("clock").innerText;
+                        if (startCount===0) {
+                            startCount=currenttime;
+                            const timeStart = startCount;
+                            time1=time;
+                            document.getElementById("starttime").innerHTML = timeStart;
+                        } else {
+                            if (stopCount===0) {
+                                stopCount=currenttime;
+                                const timeEnd = stopCount;
+                                time2=time;
+                                document.getElementById("endtime").innerHTML = timeEnd;
+                            }
+                        }
+                    }
+                    showTime(); 
+                </script>
+            </div>
+        </section>
+    </body>
+</html>
