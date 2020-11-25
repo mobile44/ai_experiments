@@ -57,7 +57,9 @@
                 color: rgba(255, 255, 255, 1.0);
                 cursor: pointer;
             }
-            
+            #canvas {
+                display: none;
+            }
         </style> 
     </head>
     <body>
@@ -79,7 +81,7 @@
                     <div class="header">
                         <h1 id="peopleCount">Number of people</h1>
                     </div>
-                    <div class='frame'><canvas id="canvas"></canvas></div>
+                    <canvas id="canvas"></canvas>
                     <div class="output">
                         <img id="photo" alt="The screen capture will appear in this box.">
                     </div>
