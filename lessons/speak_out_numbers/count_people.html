@@ -95,6 +95,7 @@
                     <div class="output">
                         <img id="photo" alt="The screen capture will appear in this box.">
                     </div>
+                    <div class='button'><button id="photobutton" onclick="reload()">Refresh</button></div>
                 </div>
             </div>
         </section>
@@ -184,6 +185,9 @@
                 } 
                 invalidEntries++
                 return false;
+            }
+            function reload() {
+                location.reload();
             }
             window.addEventListener('load', startup, false);
         </script>
