@@ -80,9 +80,9 @@
             </div>
             <div class="right-half">
                 <div class="header">
-                    <h1>Number of people</h1>
+                    <p id="canvas">Number of people</p>
                 </div>
-                <p id="peopleCount"></p>
+                //<p id="peopleCount"></p>
                 <canvas id="canvas"></canvas>
                 <div class="output">
                     <img id="photo" alt="The screen capture will appear in this box.">
@@ -165,7 +165,7 @@
                 cocoSsd.load().then(model => {
                     model.detect(img).then(predictions => {
                         let arrByID = predictions.filter(filterByID);
-                        document.getElementById('peopleCount').innerHTML = `People Count: ${arrByID.length}`;
+                        document.getElementById('peopleCount').innerHTML = `Number of people ${arrByID.length}`;
                     });
                 });
             }
