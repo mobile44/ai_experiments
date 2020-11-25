@@ -6,13 +6,18 @@
         </style>
     </head>
     <body>
+        <img id='sample' src='/images/sample.jpg '/>
     </body>
     <script>
-        const net = await posenet.load({
-          architecture: 'ResNet50',
-          outputStride: 32,
-          inputResolution: { width: 257, height: 200 },
-          quantBytes: 2
-        });
+        var imageElement = document.getElementById('sample');
+        posenet.load().then(function(net){
+          return net.estimateMultiplePoses(imageElement, {
+            flipHorizontal: false,
+            maxDetections: 2,
+            scoreThreshold: 0.6,
+            nmsRadius: 20})
+        }).then(function(poses){
+            console.log(poses);
+        })
     </script>
 </html>
