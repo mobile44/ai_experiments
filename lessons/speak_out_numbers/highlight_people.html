@@ -181,8 +181,10 @@
                         document.getElementById('peopleCount').innerHTML = `Number of people ${arrByID.length}`;
                         console.log("DIV Left: ", document.getElementsByClassName('output').marginLeft);
                         console.log("Picture Left: ", document.getElementById('photo').marginLeft);
-                        console.log("Picture Top left:", getOffset( document.getElementById('photo') ).left);
-                        console.log("Picture Top top:", getOffset( document.getElementById('photo') ).top);
+                        var px = getOffset( document.getElementById('photo') ).left;
+                        var py = getOffset( document.getElementById('photo') ).top;
+                        console.log("Picture Top left:", px);
+                        console.log("Picture Top top:", py);
                         for (let n = 0; n < predictions.length; n++) {
                             var dx = predictions[n].bbox[0];
                             var dy = predictions[n].bbox[1];
@@ -191,8 +193,8 @@
                             console.log("W: ",dw,"H: ",dh);
                             console.log("Predictions: ", predictions);
                             liveView.style.border = "thin solid #0000FF";
-                            liveView.style.marginLeft = `${dx}px`;
-                            liveView.style.marginRight = `${dy}px`;
+                            liveView.style.marginLeft = `${px}px`;
+                            liveView.style.marginRight = `${py}px`;
                             liveView.style.width = `${dw}px`;
                             liveView.style.height = `${dh}px`;
                             /*
