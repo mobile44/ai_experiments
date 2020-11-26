@@ -180,8 +180,10 @@
                         let arrByID = predictions.filter(filterByID);
                         document.getElementById('peopleCount').innerHTML = `Number of people ${arrByID.length}`;
                         for (let n = 0; n < predictions.length; n++) {
-                            var dw = predictions[n].bbox[1];
-                            var dh = predictions[n].bbox[2];
+                            var dx = predictions[n].bbox[0];
+                            var dy = predictions[n].bbox[1];
+                            var dw = predictions[n].bbox[2];
+                            var dh = predictions[n].bbox[3];
                             console.log("W: ",dw,"H: ",dh);
                             console.log("Predictions: ", predictions);
                             liveView.style.border = "thin solid #0000FF";
