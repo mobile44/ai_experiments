@@ -188,9 +188,7 @@
                             console.log("Predictions: ", predictions);
                             liveView.style.border = "thin solid #0000FF";
                             liveView.style.width = `${dw}px`;
-                            /*$(this).css('width', parseFloat($(this).css('width')) - 8 + 'px');*/
-                            liveView.style.height = dh;
-                            liveView.innerHTML = "Hello World";
+                            liveView.style.height = `${dh}px`;
                             /*
                             const p = document.createElement('p');
                             p.innerText = predictions[n].class  + ' - with ' + Math.round(parseFloat(predictions[n].score) * 100) + '% confidence.'
