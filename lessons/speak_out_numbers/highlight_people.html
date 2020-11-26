@@ -179,7 +179,8 @@
                     model.detect(img).then(predictions => {
                         let arrByID = predictions.filter(filterByID);
                         document.getElementById('peopleCount').innerHTML = `Number of people ${arrByID.length}`;
-                        console.log("DIV Left: ", document.getElementsByClassName('camera').marginLeft);
+                        console.log("DIV Left: ", document.getElementsByClassName('output').marginLeft);
+                        console.log("Picture Left: ", document.getElementById('photo').marginLeft);
                         for (let n = 0; n < predictions.length; n++) {
                             var dx = predictions[n].bbox[0];
                             var dy = predictions[n].bbox[1];
