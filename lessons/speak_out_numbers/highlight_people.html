@@ -181,6 +181,7 @@
                         document.getElementById('peopleCount').innerHTML = `Number of people ${arrByID.length}`;
                         console.log("DIV Left: ", document.getElementsByClassName('output').marginLeft);
                         console.log("Picture Left: ", document.getElementById('photo').marginLeft);
+                        console.log("Picture Top left:", getOffset( document.getElementById('photo') ).left); 
                         for (let n = 0; n < predictions.length; n++) {
                             var dx = predictions[n].bbox[0];
                             var dy = predictions[n].bbox[1];
@@ -208,6 +209,16 @@
                         }
                     });
                 });
+            }
+            function getOffset( el ) {
+                var _x = 0;
+                var _y = 0;
+                while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
+                    _x += el.offsetLeft - el.scrollLeft;
+                    _y += el.offsetTop - el.scrollTop;
+                    el = el.offsetParent;
+                }
+                return { top: _y, left: _x };
             }
             function filterByID(item) {
                 if (item.class === "person") {
