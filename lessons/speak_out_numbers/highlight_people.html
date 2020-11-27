@@ -70,6 +70,12 @@
                 width: 320px;
                 height: 240px;
             }
+            .highlighter {
+                background: rgba(0, 255, 0, 0.25);
+                border: 1px dashed #fff;
+                z-index: 1;
+                position: absolute;
+            }
         </style> 
     </head>
     <body>
@@ -93,8 +99,8 @@
                     </div>
                     <canvas id="canvas"></canvas>
                     <div id='output'>
-                        <div id="liveView"></div>
-                        <!--<div id="liveView"><img id="photo" alt="The screen capture will appear in this box."></div>-->
+                        <div id="liveView" class="highlighter"></div>
+                        <img id="photo" alt="The screen capture will appear in this box.">
                     </div>
                     <div class='button'><button id="photobutton" onclick="reload()">Refresh</button></div>
                     
@@ -153,7 +159,7 @@
                 context.fillStyle = "#ffffff";
                 context.fillRect(0, 0, canvas.width, canvas.height);
                 var data = canvas.toDataURL('image/png');
-                /*photo.setAttribute('src', data);*/
+                photo.setAttribute('src', data);
             }
             function takepicture() {
                 var context = canvas.getContext('2d');
@@ -162,8 +168,7 @@
                     canvas.height = height;
                     context.drawImage(video, 0, 0, width, height);
                     var data = canvas.toDataURL('image/png');
-                    document.getElementsById('output').style.backgroundImage = "url('./images/sample.jpg')";
-                    /*photo.setAttribute('src', data);*/
+                    photo.setAttribute('src', data);
                 } else {
                     clearphoto();
                 }
@@ -173,7 +178,7 @@
                 video.pause();
                 video.srcObject = null;
                 st.getTracks().forEach(function(track) { track.stop(); })
-                /*predictPerson();*/
+                predictPerson();
             }
             function predictPerson() {
                 const img = document.getElementById('photo');
@@ -194,13 +199,13 @@
                             var dh = predictions[n].bbox[3];
                             console.log("W: ",dw,"H: ",dh);
                             console.log("Predictions: ", predictions);
-                            liveView.style.border = "thin solid #0000FF";
-                            /*liveView.style.marginLeft = `${px}px`;
-                            liveView.style.marginRight = `${py}px`;*/
+                            /*liveView.style.border = "thin solid #0000FF";
+                            liveView.style.marginLeft = `${px}px`;
+                            liveView.style.marginRight = `${py}px`;
                             liveView.style.marginLeft = "150px";
                             liveView.style.marginRight = "50px";
                             liveView.style.width = `${dw}px`;
-                            liveView.style.height = `${dh}px`;
+                            liveView.style.height = `${dh}px`;*/
                             /*
                             const p = document.createElement('p');
                             p.innerText = predictions[n].class  + ' - with ' + Math.round(parseFloat(predictions[n].score) * 100) + '% confidence.'
