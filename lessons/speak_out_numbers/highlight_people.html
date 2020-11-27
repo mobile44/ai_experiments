@@ -93,7 +93,8 @@
                     </div>
                     <canvas id="canvas"></canvas>
                     <div class='output'>
-                        <div id="liveView"><img id="photo" alt="The screen capture will appear in this box."></div>
+                        <div id="liveView"></div>
+                        <!--<div id="liveView"><img id="photo" alt="The screen capture will appear in this box."></div>-->
                     </div>
                     <div class='button'><button id="photobutton" onclick="reload()">Refresh</button></div>
                     
@@ -161,7 +162,8 @@
                     canvas.height = height;
                     context.drawImage(video, 0, 0, width, height);
                     var data = canvas.toDataURL('image/png');
-                    photo.setAttribute('src', data);
+                    document.getElementsByClassName('output').style.backgroundImage = `url(${data})`;
+                    /*photo.setAttribute('src', data);*/
                 } else {
                     clearphoto();
                 }
@@ -171,7 +173,7 @@
                 video.pause();
                 video.srcObject = null;
                 st.getTracks().forEach(function(track) { track.stop(); })
-                predictPerson();
+                /*predictPerson();*/
             }
             function predictPerson() {
                 const img = document.getElementById('photo');
