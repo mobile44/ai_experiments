@@ -219,8 +219,24 @@
                             children.push(p);
                             */
                         }
+                        drawSquare();
                     });
                 });
+            }
+            function drawSquare() {
+                var c=document.getElementById("canvas");
+                var ctx=c.getContext("2d");
+                var img=document.getElementById("photo");  
+                ctx.drawImage(img,10,10);  
+                var canvas = document.getElementById('canvas');
+                var context = canvas.getContext('2d');
+                context.beginPath();
+                context.rect(188, 50, 200, 100);
+                context.fillStyle = 'yellow';
+                context.fill();
+                context.lineWidth = 7;
+                context.strokeStyle = 'black';
+                context.stroke();
             }
             function getOffset( el ) {
                 var _x = 0;
