@@ -237,7 +237,8 @@
                 context.lineWidth = 7;
                 context.strokeStyle = 'black';
                 context.stroke();
-                var data = canvas.toDataURL('image/png');
+                data = canvas.toDataURL('image/png');
+                photo.setAttribute('src', data);
             }
             function getOffset( el ) {
                 var _x = 0;
