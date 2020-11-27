@@ -9,33 +9,33 @@
         <img id='sample' src='./images/sample.jpg '/>
     </body>
     <script>
-        var imageElement = document.getElementById('sample');
-        posenet.load().then(function(net){
-          return net.estimateMultiplePoses(imageElement, {
-            flipHorizontal: false,
-            maxDetections: 2,
-            scoreThreshold: 0.6,
-            nmsRadius: 20})
-        }).then(function(poses){
-            console.log(poses);
-        })
+        function startup() {
+            var imageElement = document.getElementById('sample');
+            posenet.load().then(function(net){
+                return net.estimateMultiplePoses(imageElement, {
+                flipHorizontal: false,
+                maxDetections: 2,
+                scoreThreshold: 0.6,
+                nmsRadius: 20})
+            }).then(function(poses){
+                console.log(poses);
+            })
+        }
         function drawSquare(x,y,w,h) {
-                var c=document.getElementById("canvas");
-                var ctx=c.getContext("2d");
-                var img=document.getElementById("photo");  
-                ctx.drawImage(img,10,10);  
-                var canvas = document.getElementById('canvas');
-                var context = canvas.getContext('2d');
-                context.beginPath();
-                context.rect(x, y, w, h);
-                /*context.fillStyle = 'yellow';
-                context.fill();
-                context.lineWidth = 7;*/
-                context.lineWidth = 1;
-                context.strokeStyle = 'red';
-                context.stroke();
-                data = canvas.toDataURL('image/png');
-                photo.setAttribute('src', data);
-            }
+            var c=document.getElementById("canvas");
+            var ctx=c.getContext("2d");
+            var img=document.getElementById("photo");  
+            ctx.drawImage(img,10,10);  
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            context.beginPath();
+            context.rect(x, y, w, h);
+            context.lineWidth = 1;
+            context.strokeStyle = 'red';
+            context.stroke();
+            data = canvas.toDataURL('image/png');
+            photo.setAttribute('src', data);
+        }
+        window.addEventListener('load', startup, false);
     </script>
 </html>
