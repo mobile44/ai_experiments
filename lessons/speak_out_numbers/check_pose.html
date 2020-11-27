@@ -14,7 +14,7 @@
             posenet.load().then(function(net){
                 return net.estimateMultiplePoses(imageElement, {
                 flipHorizontal: false,
-                maxDetections: 2,
+                maxDetections: 1,
                 scoreThreshold: 0.6,
                 nmsRadius: 20})
             }).then(function(poses){
