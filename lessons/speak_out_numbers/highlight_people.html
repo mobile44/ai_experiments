@@ -162,7 +162,7 @@
                     canvas.height = height;
                     context.drawImage(video, 0, 0, width, height);
                     var data = canvas.toDataURL('image/png');
-                    document.getElementsByClassName('output').style.backgroundImage = `url(${data})`;
+                    document.getElementsByClassName('output').style.backgroundImage = "url('./images/sample.jpg')";
                     /*photo.setAttribute('src', data);*/
                 } else {
                     clearphoto();
