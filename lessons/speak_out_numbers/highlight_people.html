@@ -188,25 +188,26 @@
                         document.getElementById('peopleCount').innerHTML = `Number of people ${arrByID.length}`;
                         console.log("DIV Left: ", document.getElementsByClassName('output').marginLeft);
                         console.log("Picture Left: ", document.getElementById('photo').marginLeft);
-                        var px = getOffset( document.getElementById('photo') ).left;
+                        /*var px = getOffset( document.getElementById('photo') ).left;
                         var py = getOffset( document.getElementById('photo') ).top;
                         console.log("Picture Top left:", px);
-                        console.log("Picture Top top:", py);
+                        console.log("Picture Top top:", py);*/
                         for (let n = 0; n < predictions.length; n++) {
                             var dx = predictions[n].bbox[0];
                             var dy = predictions[n].bbox[1];
                             var dw = predictions[n].bbox[2];
                             var dh = predictions[n].bbox[3];
-                            console.log("W: ",dw,"H: ",dh);
+                            drawSquare(dx, dy, dw, dh);
+                            /*console.log("W: ",dw,"H: ",dh);
                             console.log("Predictions: ", predictions);
-                            /*liveView.style.border = "thin solid #0000FF";
+                            liveView.style.border = "thin solid #0000FF";
                             liveView.style.marginLeft = `${px}px`;
                             liveView.style.marginRight = `${py}px`;
                             liveView.style.marginLeft = "150px";
                             liveView.style.marginRight = "50px";
                             liveView.style.width = `${dw}px`;
-                            liveView.style.height = `${dh}px`;*/
-                            /*
+                            liveView.style.height = `${dh}px`;
+                            
                             const p = document.createElement('p');
                             p.innerText = predictions[n].class  + ' - with ' + Math.round(parseFloat(predictions[n].score) * 100) + '% confidence.'
                             p.style = 'margin-left: ' + predictions[n].bbox[0] + 'px; margin-top: ' + (predictions[n].bbox[1] - 10) + 'px; width: ' + (predictions[n].bbox[2] - 10) + 'px; top: 0; left: 0;'
@@ -216,14 +217,12 @@
                             liveView.appendChild(highlighter);
                             liveView.appendChild(p);
                             children.push(highlighter);
-                            children.push(p);
-                            */
+                            children.push(p);*/
                         }
-                        drawSquare();
                     });
                 });
             }
-            function drawSquare() {
+            function drawSquare(x,y,w,h) {
                 var c=document.getElementById("canvas");
                 var ctx=c.getContext("2d");
                 var img=document.getElementById("photo");  
@@ -231,7 +230,7 @@
                 var canvas = document.getElementById('canvas');
                 var context = canvas.getContext('2d');
                 context.beginPath();
-                context.rect(16, 24, 303, 215);
+                context.rect(x, y, w, h);
                 /*context.fillStyle = 'yellow';
                 context.fill();
                 context.lineWidth = 7;*/
