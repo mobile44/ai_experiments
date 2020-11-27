@@ -232,9 +232,10 @@
                 var context = canvas.getContext('2d');
                 context.beginPath();
                 context.rect(188, 50, 200, 100);
-                context.fillStyle = 'yellow';
+                /*context.fillStyle = 'yellow';
                 context.fill();
-                context.lineWidth = 7;
+                context.lineWidth = 7;*/
+                context.lineWidth = 1;
                 context.strokeStyle = 'black';
                 context.stroke();
                 data = canvas.toDataURL('image/png');
