@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+        <style>
+        </style>
+    </head>
+    <body>
+        <img id='sample' src='./images/sample.jpg '/>
+    </body>
+    <script>
+        var imageElement = document.getElementById('sample');
+        posenet.load().then(function(net){
+          return net.estimateMultiplePoses(imageElement, {
+            flipHorizontal: false,
+            maxDetections: 2,
+            scoreThreshold: 0.6,
+            nmsRadius: 20})
+        }).then(function(poses){
+            console.log(poses);
+        })
+    </script>
+</html>
