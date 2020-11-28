@@ -61,9 +61,9 @@
             for (i=0; i<xy.length; i++) {
                 var x = xy.x;
                 var y = xy.y;
-                ctx.arc(x, y, 10, 0, 2 * Math.PI, true);
-                ctx.strokeStyle = 'red';
-                ctx.stroke();
+                context.arc(x, y, 10, 0, 2 * Math.PI, true);
+                context.strokeStyle = 'red';
+                context.stroke();
             }
             var data = canvas.toDataURL('image/png');
             img.setAttribute('src', data);
