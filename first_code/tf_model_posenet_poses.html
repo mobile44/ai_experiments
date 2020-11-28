@@ -104,6 +104,7 @@
                             keypointsx = keypoints3;
                             canvasx = canvas3;
                             break;
+                    }
                     return net.estimateMultiplePoses(samplex, {
                     flipHorizontal: false,
                     maxDetections: 1,
@@ -159,6 +160,7 @@
                     keypointsx = keypoints3;
                     canvasx = canvas3;
                     break;
+            }
             var c=canvasx;
             c.width = samplex.naturalWidth;
             c.height = samplex.naturalHeight;
