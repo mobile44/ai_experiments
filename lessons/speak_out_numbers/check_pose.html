@@ -7,6 +7,7 @@
     </head>
     <body>
         <div id='photo'>
+            <canvas id="canvas"></canvas>
             <img id='sample' src='./images/sample.jpg '/>
             <p id='keypoints'></p>
         </div>
@@ -37,6 +38,13 @@
                 }
                 document.getElementById('keypoints').innerText= `${text}`;
             })
+        }
+        function drawPoints(x,y) {
+            var c=document.getElementById("canvas");
+            var ctx=c.getContext("2d");
+            ctx.arc(x, y, 1, 0, 360, true);
+            ctx.strokeStyle = 'red';
+            ctx.stroke();
         }
         function drawSquare(x,y,w,h) {
             var c=document.getElementById("canvas");
