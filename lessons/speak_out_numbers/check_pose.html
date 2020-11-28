@@ -39,6 +39,7 @@
     </body>
     <script>
         const img = document.getElementById('sample');
+        const output = document.getElementById('output');
         const keypoints = document.getElementById('keypoints');
         function startup() {
             posenet.load().then(function(net){
@@ -95,7 +96,7 @@
                 context.fillText(i, x, y);
             }
             var data = canvas.toDataURL('image/png');
-            img.setAttribute('src', data);
+            output.setAttribute('src', data);
         }
         function drawSquare(x,y,w,h) {
             var c=document.getElementById("canvas");
