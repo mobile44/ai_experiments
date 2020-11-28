@@ -30,6 +30,7 @@
                 var part = "";
                 var partx = "";
                 var party = "";
+                var partxy = [];
                 for (i=0; i<poses.length; i++) {
                     console.log("Keypoints: ", poses[i].keypoints);
                     console.log("Keypoints Length: ", poses[i].keypoints.length);
@@ -40,28 +41,32 @@
                         text += part + " ";
                         text += partx + " ";
                         text += party + "\n";
-                        drawPoints(partx, party);
+                        partxy.push(poses[i].keypoints[j].position);
                     }
                 }
                 document.getElementById('keypoints').innerText= `${text}`;
+                drawPoints(partxy);
             })
         }
-        function drawPoints(x,y) {
+        function drawPoints(xy) {
             var img=document.getElementById("sample"); 
             var c=document.getElementById("canvas");
             c.width = img.naturalWidth;
             c.height = img.naturalHeight;
-            console.log("Draw: ", x, y, c.width, c.height);
             var ctx=c.getContext("2d");
             ctx.drawImage(img,0,0);  
             var canvas = document.getElementById('canvas');
             var context = canvas.getContext('2d');
             context.beginPath();
-            ctx.arc(x, y, 10, 0, 2 * Math.PI, true);
-            ctx.strokeStyle = 'red';
-            ctx.stroke();
+            for (i=0; i<xy.length; i++) {
+                var x = xy.x;
+                var y = xy.y;
+                ctx.arc(x, y, 10, 0, 2 * Math.PI, true);
+                ctx.strokeStyle = 'red';
+                ctx.stroke();
+            }
             var data = canvas.toDataURL('image/png');
-           img.setAttribute('src', data);
+            img.setAttribute('src', data);
         }
         function drawSquare(x,y,w,h) {
             var c=document.getElementById("canvas");
