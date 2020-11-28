@@ -5,13 +5,39 @@
         <style>
         </style>
     </head>
+    <style>
+        .column {
+            float: left;
+            width: 33.33%;
+        }
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        #canvas {
+            display: none;
+        }
+    </style>
     <body>
-        <div id='photo'>
-            <canvas id="canvas"></canvas>
-            <img id='sample' src='./images/stand.jpg '/>
-        </div>
-        <div id='keypoints'>
-        </div>
+        <div class="row">
+            <div class="column">
+                <div id='photo'>
+                    <canvas id="canvas"></canvas>
+                    <img id='sample' src='./images/stand.jpg '/>
+                </div>
+            </div>
+            <div class="column">
+                <div id='photo'>
+                    <canvas id="canvas"></canvas>
+                    <img id='sample' src='./images/stand.jpg '/>
+                </div>
+            </div>
+            <div class="column">
+                <div id='keypoints'>
+                </div>
+            </div>
+        </div> 
     </body>
     <script>
         const img = document.getElementById('sample');
