@@ -202,7 +202,7 @@
                 var c=document.getElementById("canvas");
                 var ctx=c.getContext("2d");
                 var img=document.getElementById("photo"); 
-                ctx.drawImage(img,10,10);  
+                ctx.drawImage(img,0,0,width,height);  
                 var canvas = document.getElementById('canvas');
                 var context = canvas.getContext('2d')
                 context.beginPath();
@@ -213,9 +213,6 @@
                 context.lineWidth = 1;
                 context.strokeStyle = 'red';
                 context.stroke();
-                canvas.width = width;
-                canvas.height = height;
-                context.drawImage(video, 0, 0, width, height);
                 data = canvas.toDataURL('image/png');
                 photo.setAttribute('src', data);
             }
