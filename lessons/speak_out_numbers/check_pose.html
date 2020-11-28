@@ -34,7 +34,7 @@
                         text += poses[i].keypoints[j].part + " ";
                         text += poses[i].keypoints[j].position.x + " ";
                         text += poses[i].keypoints[j].position.y + "\n";
-                        drawPoints(poses[i].keypoints[j].position.x. poses[i].keypoints[j].position.y);
+                        drawPoints(poses[i].keypoints[j].position.x, poses[i].keypoints[j].position.y);
                     }
                 }
                 document.getElementById('keypoints').innerText= `${text}`;
