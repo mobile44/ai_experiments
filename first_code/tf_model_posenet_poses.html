@@ -91,20 +91,20 @@
                 posenet.load().then(function(net){
                     switch(k) {
                         case 0:
-                            samplex = sample1;
-                            outputx = output1;
-                            keypointsx = keypoints1;
-                            canvasx = canvas1;
+                            samplex = document.getElementById('sample1');
+                            outputx = document.getElementById('output1');
+                            keypointsx = document.getElementById('keypoints1');
+                            canvasx = document.getElementById('canvas1');
                         case 1:
-                            samplex = sample2;
-                            outputx = output2;
-                            keypointsx = keypoints2;
-                            canvasx = canvas2;
+                            samplex = document.getElementById('sample2');
+                            outputx = document.getElementById('output2');
+                            keypointsx = document.getElementById('keypoints2');
+                            canvasx = document.getElementById('canvas2');
                         case 2:
-                            samplex = sample3;
-                            outputx = output3;
-                            keypointsx = keypoints3;
-                            canvasx = canvas3;
+                            samplex = document.getElementById('sample3');
+                            outputx = document.getElementById('output3');
+                            keypointsx = document.getElementById('keypoints3');
+                            canvasx = document.getElementById('canvas3');
                     }
                     console.log("Sample: ", samplex);
                     return net.estimateMultiplePoses(samplex, {
