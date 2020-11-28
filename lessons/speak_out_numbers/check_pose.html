@@ -86,12 +86,12 @@
                     rightankle2righthip=poses[i].keypoints[16].position.y - poses[i].keypoints[12].position.y
                     rightankle2nose=poses[i].keypoints[16].position.y - poses[i].keypoints[0].position.y
                     poserate=rightankle2righthip/rightankle2nose
+                    keypoints.style.marginTop=poses[i].keypoints[1].position.y
                 }
                 text += `*Ankle to Hip: ${rightankle2righthip}\n`;
                 text += `*Ankle to Nose: ${rightankle2nose}\n`;
                 text += `*Pose Rate: ${poserate}\n`;
                 keypoints.innerText= `${text}`;
-                keypoints.style.marginTop=poses[i].keypoints[1].position.y
                 drawPoints(partxy);
             })
         }
