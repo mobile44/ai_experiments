@@ -29,10 +29,10 @@
                 for (i=0; i<poses.length; i++) {
                     console.log("Keypoints: ", poses[i].keypoints);
                     console.log("Keypoints Length: ", poses[i].keypoints.length);
-                    for (j=0; j<poses[i].keypoint.length; j++) {
-                        text += poses[i].keypoint.part + " ";
-                        text += poses[i].keypoint.positions.x + " ";
-                        text += poses[i].keypoint.positions.y + "\n";
+                    for (j=0; j<poses[i].keypoints.length; j++) {
+                        text += poses[i].keypoints.part + " ";
+                        text += poses[i].keypoints.position.x + " ";
+                        text += poses[i].keypoints.position.y + "\n";
                     }
                 }
                 document.getElementById('keypoints').innerText= `${text}`;
