@@ -91,6 +91,7 @@
                 text += `*Ankle to Nose: ${rightankle2nose}\n`;
                 text += `*Pose Rate: ${poserate}\n`;
                 keypoints.innerText= `${text}`;
+                keypoints.style.marginTop=poses[i].keypoints[1].position.y
                 drawPoints(partxy);
             })
         }
