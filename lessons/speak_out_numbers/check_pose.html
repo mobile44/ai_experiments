@@ -3,6 +3,15 @@
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
         <style>
+            .topic {
+                width: 100%;
+                margin: 0 auto;
+                padding: 10px;
+                text-align: center;
+                background: #CD5C5C;
+                color: white;
+                font-size: 20px;
+            }
             .column {
                 float: left;
                 width: 33.33%;
@@ -21,24 +30,27 @@
         </style>
     </head>
     <body>
-        <div class="row">
-            <div class="column">
-                <div id='photo'>
-                    <canvas id="canvas"></canvas>
-                    <img id='sample' src='./images/stand.jpg '/>
+        <section class="zone">
+            <div class="topic">Stand/Sit down/Lay down.</div>
+            <div class="row">
+                <div class="column">
+                    <div id='photo'>
+                        <canvas id="canvas"></canvas>
+                        <img id='sample' src='./images/stand.jpg '/>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div id='pose'>
-                    <canvas id="canvas"></canvas>
-                    <img id='output'/>
+                <div class="column">
+                    <div id='pose'>
+                        <canvas id="canvas"></canvas>
+                        <img id='output'/>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div id='keypoints'>
+                <div class="column">
+                    <div id='keypoints'>
+                    </div>
                 </div>
-            </div>
-        </div> 
+            </div> 
+        </session>
     </body>
     <script>
         const img = document.getElementById('sample');
