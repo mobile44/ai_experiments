@@ -3,22 +3,20 @@
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
         <style>
+            .column {
+                float: left;
+                width: 33.33%;
+            }
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            #canvas {
+                display: none;
+            }
         </style>
     </head>
-    <style>
-        .column {
-            float: left;
-            width: 33.33%;
-        }
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-        #canvas {
-            display: none;
-        }
-    </style>
     <body>
         <div class="row">
             <div class="column">
