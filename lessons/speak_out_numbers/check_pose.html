@@ -65,6 +65,10 @@
                 context.arc(x, y, 5, 0, 2 * Math.PI, true);
                 context.strokeStyle = 'red';
                 context.stroke();
+                context.textAlign = "center";
+                context.fillStyle = "white";
+                context.font = "6pt Calibri";
+                context.fillText(i, x, y);
             }
             var data = canvas.toDataURL('image/png');
             img.setAttribute('src', data);
