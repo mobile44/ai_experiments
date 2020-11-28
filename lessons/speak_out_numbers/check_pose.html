@@ -57,7 +57,7 @@
             var canvas = document.getElementById('canvas');
             var context = canvas.getContext('2d');
             context.beginPath();
-            ctx.arc(x, y, 10, 0, 360, true);
+            ctx.arc(x, y, 10, 0, 2 * Math.PI, true);
             ctx.strokeStyle = 'red';
             ctx.stroke();
             var data = canvas.toDataURL('image/png');
