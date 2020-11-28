@@ -40,17 +40,26 @@
             })
         }
         function drawPoints(x,y) {
+            var img=document.getElementById("sample"); 
             var c=document.getElementById("canvas");
+            c.width = img.naturalWidth;
+            c.height = img.naturalHeight;
             var ctx=c.getContext("2d");
+            ctx.drawImage(img,0,0);  
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            context.beginPath();
             ctx.arc(x, y, 1, 0, 360, true);
             ctx.strokeStyle = 'red';
             ctx.stroke();
+            var data = canvas.toDataURL('image/png');
+            photo.setAttribute('src', data);
         }
         function drawSquare(x,y,w,h) {
             var c=document.getElementById("canvas");
             var ctx=c.getContext("2d");
             var img=document.getElementById("photo");  
-            ctx.drawImage(img,10,10);  
+            ctx.drawImage(img,0,0);  
             var canvas = document.getElementById('canvas');
             var context = canvas.getContext('2d');
             context.beginPath();
