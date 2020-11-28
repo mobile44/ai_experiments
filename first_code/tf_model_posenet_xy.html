@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+        <style>
+            .topic {
+                width: 100%;
+                margin: 0 auto;
+                padding: 10px;
+                text-align: center;
+                background: #CD5C5C;
+                color: white;
+                font-size: 20px;
+            }
+            .column {
+                float: left;
+                width: 33.33%;
+            }
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            #canvas {
+                display: none;
+            }
+            #keypoints {
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="zone">
+            <div class="topic">Stand/Sit down/Lay down.</div>
+            <div class="row">
+                <div class="column">
+                    <div id='photo'>
+                        <canvas id="canvas"></canvas>
+                        <img id='sample' src='./images/stand.jpg '/>
+                    </div>
+                </div>
+                <div class="column">
+                    <div id='pose'>
+                        <canvas id="canvas"></canvas>
+                        <img id='output'/>
+                    </div>
+                </div>
+                <div class="column">
+                    <div id='keypoints'>
+                    </div>
+                </div>
+            </div> 
+        </session>
+    </body>
+    <script>
+        const img = document.getElementById('sample');
+        const output = document.getElementById('output');
+        const keypoints = document.getElementById('keypoints');
+        function startup() {
+            posenet.load().then(function(net){
+                return net.estimateMultiplePoses(sample, {
+                flipHorizontal: false,
+                maxDetections: 1,
+                scoreThreshold: 0.6,
+                nmsRadius: 20})
+            }).then(function(poses){
+                /*console.log(poses);
+                console.log("Array Length: ",poses.length);*/
+                var text='';
+                var part = "";
+                var partx = "";
+                var party = "";
+                var partxy = [];
+                for (i=0; i<poses.length; i++) {
+                    console.log("Keypoints: ", poses[i].keypoints);
+                    console.log("Keypoints Length: ", poses[i].keypoints.length);
+                    for (j=0; j<poses[i].keypoints.length; j++) {
+                        part = poses[i].keypoints[j].part;
+                        partx = poses[i].keypoints[j].position.x;
+                        party = poses[i].keypoints[j].position.y;
+                        text += part + " ";
+                        text += partx + " ";
+                        text += party + "\n";
+                        partxy.push(poses[i].keypoints[j].position);
+                    }
+                    rightankle2righthip=poses[i].keypoints[16].position.y - poses[i].keypoints[12].position.y
+                    rightankle2nose=poses[i].keypoints[16].position.y - poses[i].keypoints[0].position.y
+                    poserate=rightankle2righthip/rightankle2nose
+                    keypoints.style.marginTop=poses[i].keypoints[1].position.y
+                }
+                text += `*Ankle to Hip: ${rightankle2righthip}\n`;
+                text += `*Ankle to Nose: ${rightankle2nose}\n`;
+                text += `*Pose Rate: ${poserate}\n`;
+                keypoints.innerText= `${text}`;
+                drawPoints(partxy);
+            })
+        }
+        function drawPoints(xy) {
+            var c=document.getElementById("canvas");
+            c.width = img.naturalWidth;
+            c.height = img.naturalHeight;
+            var ctx=c.getContext("2d");
+            ctx.drawImage(img,0,0);  
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            for (i=0; i<xy.length; i++) {
+                context.beginPath();
+                var x = xy[i].x;
+                var y = xy[i].y;
+                context.moveTo(x,y);
+                context.arc(x, y, 8, 0, 2 * Math.PI, true);
+                context.strokeStyle = 'red';
+                context.stroke();
+                context.moveTo(x,y);
+                context.textAlign = "center";
+                context.fillStyle = "white";
+                context.font = "8pt Calibri";
+                context.fillText(i, x, y);
+            }
+            var data = canvas.toDataURL('image/png');
+            output.setAttribute('src', data);
+        }
+        function drawSquare(x,y,w,h) {
+            var c=document.getElementById("canvas");
+            var ctx=c.getContext("2d");
+            var img=document.getElementById("photo");  
+            ctx.drawImage(img,0,0);  
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            context.beginPath();
+            context.rect(x, y, w, h);
+            context.lineWidth = 1;
+            context.strokeStyle = 'red';
+            context.stroke();
+            data = canvas.toDataURL('image/png');
+            photo.setAttribute('src', data);
+        }
+        window.addEventListener('load', startup, false);
+    </script>
+</html>
