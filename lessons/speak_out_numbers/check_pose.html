@@ -6,7 +6,12 @@
         </style>
     </head>
     <body>
-        <img id='sample' src='./images/sample.jpg '/>
+        <div id='photo'>
+            <img id='sample' src='./images/sample.jpg '/>
+            <p id='keypoints'></p>
+        </div>
+        <div id='keypoints'>
+        </div>
     </body>
     <script>
         function startup() {
@@ -20,10 +25,17 @@
             }).then(function(poses){
                 /*console.log(poses);
                 console.log("Array Length: ",poses.length);*/
+                var text='';
                 for (i=0; i<poses.length; i++) {
                     console.log("Keypoints: ", poses[i].keypoints);
                     console.log("Keypoints Length: ", poses[i].keypoints.length);
+                    for (j=0; j<poses[i].keypoints.length; j++) {
+                        text += poses[i].keypoints.part + " ";
+                        text += poses[i].keypoints.positions.x + " ";
+                        text += poses[i].keypoints.positions.y + "\n";
+                    }
                 }
+                document.getElementById('keypoints').innerText= `${text}`;
             })
         }
         function drawSquare(x,y,w,h) {
