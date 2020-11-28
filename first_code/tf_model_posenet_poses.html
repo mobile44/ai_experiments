@@ -95,19 +95,16 @@
                             outputx = output1;
                             keypointsx = keypoints1;
                             canvasx = canvas1;
-                            break;
                         case 1:
                             samplex = sample2;
                             outputx = output2;
                             keypointsx = keypoints2;
                             canvasx = canvas2;
-                            break;
                         case 2:
                             samplex = sample3;
                             outputx = output3;
                             keypointsx = keypoints3;
                             canvasx = canvas3;
-                            break;
                     }
                     console.log("Sample: ", samplex);
                     return net.estimateMultiplePoses(samplex, {
@@ -152,19 +149,16 @@
                     outputx = output1;
                     keypointsx = keypoints1;
                     canvasx = canvas1;
-                    break;
                 case 1:
                     samplex = sample2;
                     outputx = output2;
                     keypointsx = keypoints2;
                     canvasx = canvas2;
-                    break;
                 case 2:
                     samplex = sample3;
                     outputx = output3;
                     keypointsx = keypoints3;
                     canvasx = canvas3;
-                    break;
             }
             var c=canvasx;
             c.width = samplex.naturalWidth;
