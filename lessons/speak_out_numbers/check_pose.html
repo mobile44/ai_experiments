@@ -12,15 +12,6 @@
                 color: white;
                 font-size: 20px;
             }
-            .column {
-                float: left;
-                width: 33.33%;
-            }
-            .row:after {
-                content: "";
-                display: table;
-                clear: both;
-            }
             .canvas {
                 display: none;
             }
@@ -68,46 +59,6 @@
                 </tr>
             </table>
         </section>
-        <!--
-        <section class="zone">
-            <div class="topic">Stand/Sit down/Lay down.</div>
-            <div class="row">
-                <div class="column">
-                    <div id='photo1'>
-                        <canvas id="canvas1" class="canvas"></canvas>
-                        <img id='sample1' src='./images/stand1.jpg '/>
-                    </div>
-                    <div id='photo2'>
-                        <canvas id="canvas2" class="canvas"></canvas>
-                        <img id='sample2' src='./images/sit1.jpg '/>
-                    </div>
-                    <div id='photo3'>
-                        <canvas id="canvas3" class="canvas"></canvas>
-                        <img id='sample3' src='./images/laydown1.jpg '/>
-                    </div>
-                </div>
-                <div class="column">
-                    <div id='pose1'>
-                        <img id='output1'/>
-                    </div>
-                    <div id='pose2'>
-                        <img id='output2'/>
-                    </div>
-                    <div id='pose3'>
-                        <img id='output3'/>
-                    </div>
-                </div>
-                <div class="column">
-                    <div id='keypoints1' class="keypoints">
-                    </div>
-                    <div id='keypoints2' class="keypoints">
-                    </div>
-                    <div id='keypoints3' class="keypoints">
-                    </div>
-                </div>
-            </div> 
-        </session>
-        -->
     </body>
     <script>
         const sample1 = document.getElementById('sample1');
@@ -148,22 +99,6 @@
                     outputStride: 16,
                     multiplier: 0.75})
                 }).then(function(pose){
-                    /*
-                    var text='';
-                    var part = "";
-                    var partx = "";
-                    var party = "";
-                    var partxy = [];
-                    for (j=0; j<pose.keypoints.length; j++) {
-                        part = pose.keypoints[j].part;
-                        partx = pose.keypoints[j].position.x;
-                        party = pose.keypoints[j].position.y;
-                        text += part + " ";
-                        text += partx + " ";
-                        text += party + "\n";
-                        partxy.push(pose.keypoints[j].position);
-                    }
-                    */
                     righthip2nose = pose.keypoints[12].position.y - pose.keypoints[0].position.y;
                     rightknee2righthip = pose.keypoints[14].position.y - pose.keypoints[12].position.y;
                     poserate = rightknee2righthip/righthip2nose;
@@ -186,191 +121,6 @@
                 })
             }
         }
-        /*
-        const sample1 = document.getElementById('sample1');
-        const sample2 = document.getElementById('sample2');
-        const sample3 = document.getElementById('sample3');
-        const output1 = document.getElementById('output1');
-        const output2 = document.getElementById('output2');
-        const output3 = document.getElementById('output3');
-        const keypoints1 = document.getElementById('keypoints1');
-        const keypoints2 = document.getElementById('keypoints2');
-        const keypoints3 = document.getElementById('keypoints3');
-        const canvas1 = document.getElementById('canvas1');
-        const canvas2 = document.getElementById('canvas2');
-        const canvas3 = document.getElementById('canvas3');
-        var samplex;
-        var outputx;
-        var keypointx;
-        var canvasx;
-        async function startup() {
-            for (k=0; k<3; k++) {
-                switch(k) {
-                    case 0:
-                        samplex = sample1;
-                        outputx = output1;
-                        keypointsx = keypoints1;
-                        canvasx = canvas1;
-                        break;
-                    case 1:
-                        samplex = sample2;
-                        outputx = output2;
-                        keypointsx = keypoints2;
-                        canvasx = canvas2;
-                        break;
-                    case 2:
-                        samplex = sample3;
-                        outputx = output3;
-                        keypointsx = keypoints3;
-                        canvasx = canvas3;
-                        break;
-                }
-                await posenet.load().then(function(net){
-                    console.log("Sample: ", samplex);
-                    return net.estimateMultiplePoses(samplex, {
-                    flipHorizontal: false,
-                    maxDetections: 1,
-                    scoreThreshold: 0.6,
-                    nmsRadius: 20})
-                }).then(function(poses){
-                    console.log("Poses: ",poses);
-                    var text='';
-                    var part = "";
-                    var partx = "";
-                    var party = "";
-                    var partxy = [];
-                    for (i=0; i<poses.length; i++) {
-                        for (j=0; j<poses[i].keypoints.length; j++) {
-                            part = poses[i].keypoints[j].part;
-                            partx = poses[i].keypoints[j].position.x;
-                            party = poses[i].keypoints[j].position.y;
-                            text += part + " ";
-                            text += partx + " ";
-                            text += party + "\n";
-                            partxy.push(poses[i].keypoints[j].position);
-                        }
-                        rightankle2righthip=poses[i].keypoints[16].position.y - poses[i].keypoints[12].position.y
-                        rightankle2nose=poses[i].keypoints[16].position.y - poses[i].keypoints[0].position.y
-                        poserate=rightankle2righthip/rightankle2nose
-                        keypointsx.style.marginTop=poses[i].keypoints[1].position.y
-                    }
-            
-                    text += `*Ankle to Hip: ${rightankle2righthip}\n`;
-                    text += `*Ankle to Nose: ${rightankle2nose}\n`;
-                    text += `*Pose Rate: ${poserate}\n`;
-                    keypointsx.innerText= `${text}`;
-                    console.log("K:", k);
-                    drawPoints(partxy, k);
-                })
-            }
-        }
-        async function startup1() {
-            for (k=0; k<3; k++) {
-                switch(k) {
-                    case 0:
-                        samplex = sample1;
-                        outputx = output1;
-                        keypointsx = keypoints1;
-                        canvasx = canvas1;
-                        break;
-                    case 1:
-                        samplex = sample2;
-                        outputx = output2;
-                        keypointsx = keypoints2;
-                        canvasx = canvas2;
-                        break;
-                    case 2:
-                        samplex = sample3;
-                        outputx = output3;
-                        keypointsx = keypoints3;
-                        canvasx = canvas3;
-                        break;
-                }
-                await posenet.load().then(function(net){
-                    console.log("Sample: ", samplex);
-                    return net.estimateSinglePose(samplex, {
-                    architecture: 'MobileNetV1',
-                    outputStride: 16,
-                    multiplier: 0.75})
-                }).then(function(pose){
-                    console.log("Pose: ",pose);
-                    var text='';
-                    var part = "";
-                    var partx = "";
-                    var party = "";
-                    var partxy = [];
-                    for (j=0; j<pose.keypoints.length; j++) {
-                        part = pose.keypoints[j].part;
-                        partx = pose.keypoints[j].position.x;
-                        party = pose.keypoints[j].position.y;
-                        text += part + " ";
-                        text += partx + " ";
-                        text += party + "\n";
-                        partxy.push(pose.keypoints[j].position);
-                    }
-                    rightankle2righthip=pose.keypoints[16].position.y - pose.keypoints[12].position.y
-                    rightankle2nose=pose.keypoints[16].position.y - pose.keypoints[0].position.y
-                    rightknee2righthip=pose.keypoints[14].position.y - pose.keypoints[12].position.y;
-                    poserate=rightankle2righthip/rightankle2nose
-                    keypointsx.style.marginTop=pose.keypoints[1].position.y
-                    text += `*Ankle to Hip: ${rightankle2righthip}\n`;
-                    text += `*Ankle to Nose: ${rightankle2nose}\n`;
-                    text += `*Pose Rate: ${poserate}\n`;
-                    keypointsx.innerText= `${text}`;
-                    console.log("K:", k);
-                    drawPoints(partxy, k);
-                })
-            }
-        }
-        function drawPoints(xy, idx) {
-            switch(idx) {
-                case 0:
-                    samplex = sample1;
-                    outputx = output1;
-                    keypointsx = keypoints1;
-                    canvasx = canvas1;
-                    break;
-                case 1:
-                    samplex = sample2;
-                    outputx = output2;
-                    keypointsx = keypoints2;
-                    canvasx = canvas2;
-                    break;
-                case 2:
-                    samplex = sample3;
-                    outputx = output3;
-                    keypointsx = keypoints3;
-                    canvasx = canvas3;
-                    break;
-            }
-            console.log("IDX: ", idx);
-            console.log("Output1: ", outputx);
-            var c1=canvasx;
-            c1.width = samplex.naturalWidth;
-            c1.height = samplex.naturalHeight;
-            ctx1=c1.getContext("2d");
-            ctx1.drawImage(samplex,0,0);  
-            var c2 = canvasx;
-            var ctx2 = c2.getContext('2d');
-            for (i=0; i<xy.length; i++) {
-                ctx2.beginPath();
-                var x = xy[i].x;
-                var y = xy[i].y;
-                ctx2.moveTo(x,y);
-                ctx2.arc(x, y, 8, 0, 2 * Math.PI, true);
-                ctx2.strokeStyle = 'red';
-                ctx2.stroke();
-                ctx2.moveTo(x,y);
-                ctx2.textAlign = "center";
-                ctx2.fillStyle = "white";
-                ctx2.font = "8pt Calibri";
-                ctx2.fillText(i, x, y);
-            }
-            var data = c2.toDataURL('image/png');
-            console.log("Output2: ", outputx);
-            outputx.setAttribute('src', data);
-        }
-        */
         window.addEventListener('load', startup, false);
     </script>
 </html>
