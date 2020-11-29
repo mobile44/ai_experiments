@@ -174,13 +174,11 @@
                     keypointsx.innerText= `${text}`;
                     console.log("K:", k);
                     drawPoints(partxy, k);*/
-                    if (rightankle2nose>300) and (poserate<0.55) {
+                    if (rightankle2nose>300) && (poserate<0.55) {
                         keypointsx.innerText="Standing";
-                    }
-                    if (rightankle2nose>100) and and (rightankle2nose<300) and (poserate>0.55) and (poserate<0.6) {
+                    } else if (rightankle2nose>100) && (rightankle2nose<300) && (poserate>0.55) && (poserate<0.6) {
                         keypointsx.innerText="sitting down";
-                    }
-                    if (rightankle2nose<100) and (poserate>0.6) {
+                    } else (rightankle2nose<100) && (poserate>0.6) {
                         keypointsx.innerText="Falling down";
                     }
                 })
