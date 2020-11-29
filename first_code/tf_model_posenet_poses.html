@@ -106,7 +106,6 @@
                             canvasx = canvas3;
                 }
                 await posenet.load().then(function(net){   
-                    console.log("Sample: ", samplex);
                     return net.estimateMultiplePoses(samplex, {
                     flipHorizontal: false,
                     maxDetections: 1,
@@ -182,6 +181,7 @@
                 ctx2.fillText(i, x, y);
             }
             var data = c2.toDataURL('image/png');
+            console.log("Sample: ", outputx);
             outputx.setAttribute('src', data);
         }
         window.addEventListener('load', startup, false);
