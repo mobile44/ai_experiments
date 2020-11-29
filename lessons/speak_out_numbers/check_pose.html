@@ -176,9 +176,11 @@
                     drawPoints(partxy, k);*/
                     if (rightankle2nose>300 && poserate<0.55) {
                         keypointsx.innerText="Standing";
-                    } else if (rightankle2nose>100 && rightankle2nose<300 && poserate>0.55 && poserate<0.6) {
+                    }
+                    if (rightankle2nose>100 && rightankle2nose<300 && poserate>0.55 && poserate<0.6) {
                         keypointsx.innerText="sitting down";
-                    } else (rightankle2nose<100 && poserate>0.6) {
+                    }
+                    if (rightankle2nose<100 && poserate>0.6) {
                         keypointsx.innerText="Falling down";
                     }
                 })
