@@ -86,7 +86,7 @@
         var outputx;
         var keypointx;
         var canvasx;
-        function startup() {
+        async function startup() {
             for (k=0; k<3; k++) {
                 switch(k) {
                         case 0:
@@ -105,7 +105,7 @@
                             keypointsx = keypoints3;
                             canvasx = canvas3;
                 }
-                posenet.load().then(function(net){   
+                await posenet.load().then(function(net){   
                     console.log("Sample: ", samplex);
                     return net.estimateMultiplePoses(samplex, {
                     flipHorizontal: false,
