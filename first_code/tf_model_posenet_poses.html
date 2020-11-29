@@ -116,11 +116,9 @@
                     scoreThreshold: 0.6,
                     nmsRadius: 20})*/
                     return net.estimateSinglePose(samplex, {
-                    flipHorizontal: false,
-                    architecture: 'ResNet50',
-                    outputStride: 32,
-                    /*inputResolution: { width: 257, height: 200 },*/
-                    quantBytes: 2})
+                    architecture: 'MobileNetV1',
+                    outputStride: 16,
+                    multiplier: 0.75})
                 }).then(function(poses){
                     var text='';
                     var part = "";
