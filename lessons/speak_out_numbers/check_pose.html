@@ -67,9 +67,6 @@
         const keypoints1 = document.getElementById('keypoints1');
         const keypoints2 = document.getElementById('keypoints2');
         const keypoints3 = document.getElementById('keypoints3');
-        /*const canvas1 = document.getElementById('canvas1');
-        const canvas2 = document.getElementById('canvas2');
-        const canvas3 = document.getElementById('canvas3');*/
         var rightankle2righthip;
         var rightankle2nose;
         var poserate;
@@ -79,21 +76,17 @@
                     case 0:
                         samplex = sample1;
                         keypointsx = keypoints1;
-                        /*canvasx = canvas1;*/
                         break;
                     case 1:
                         samplex = sample2;
                         keypointsx = keypoints2;
-                        /*canvasx = canvas2;*/
                         break;
                     case 2:
                         samplex = sample3;
                         keypointsx = keypoints3;
-                        /*canvasx = canvas3;*/
                         break;
                 }
                 await posenet.load().then(function(net){
-                    /*console.log("Sample: ", samplex);*/
                     return net.estimateSinglePose(samplex, {
                     architecture: 'MobileNetV1',
                     outputStride: 16,
@@ -104,13 +97,6 @@
                     poserate = rightknee2righthip/righthip2nose;
                     rightankle2nose = pose.keypoints[16].position.y - pose.keypoints[0].position.y;
                     keypointsx.style.marginTop=pose.keypoints[1].position.y
-                    /*keypointsx.style.marginTop=pose.keypoints[1].position.y
-                    text += `*Ankle to Hip: ${rightankle2righthip}\n`;
-                    text += `*Ankle to Nose: ${rightankle2nose}\n`;
-                    text += `*Pose Rate: ${poserate}\n`;
-                    keypointsx.innerText= `${text}`;
-                    console.log("K:", k);
-                    drawPoints(partxy, k);*/
                     if (poserate>0.55) {
                         keypointsx.innerText="Standing";
                     } else if (poserate>0.2 && poserate<=0.55) {
