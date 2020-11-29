@@ -166,6 +166,7 @@
                     */
                     rightankle2righthip=pose.keypoints[16].position.y - pose.keypoints[12].position.y;
                     rightankle2nose=pose.keypoints[16].position.y - pose.keypoints[0].position.y;
+                    rightknee2righthip=pose.keypoints[14].position.y - pose.keypoints[12].position.y;
                     poserate=rightankle2righthip/rightankle2nose;
                     /*keypointsx.style.marginTop=pose.keypoints[1].position.y
                     text += `*Ankle to Hip: ${rightankle2righthip}\n`;
@@ -174,13 +175,13 @@
                     keypointsx.innerText= `${text}`;
                     console.log("K:", k);
                     drawPoints(partxy, k);*/
-                    if (rightankle2nose>300 && poserate<0.55) {
+                    if (rightankle2nose>100 && rightknee2righthip>50) {
                         keypointsx.innerText="Standing";
                     }
-                    if (rightankle2nose>100 && rightankle2nose<300 && poserate>0.55 && poserate<0.6) {
+                    if (rightankle2nose>100 && rightknee2righthip<50) {
                         keypointsx.innerText="sitting down";
                     }
-                    if (rightankle2nose<100 && poserate>0.6) {
+                    if (rightankle2nose<100 && rightknee2righthip<100) {
                         keypointsx.innerText="Falling down";
                     }
                 })
@@ -310,6 +311,7 @@
                     }
                     rightankle2righthip=pose.keypoints[16].position.y - pose.keypoints[12].position.y
                     rightankle2nose=pose.keypoints[16].position.y - pose.keypoints[0].position.y
+                    rightknee2righthip=pose.keypoints[14].position.y - pose.keypoints[12].position.y;
                     poserate=rightankle2righthip/rightankle2nose
                     keypointsx.style.marginTop=pose.keypoints[1].position.y
                     text += `*Ankle to Hip: ${rightankle2righthip}\n`;
