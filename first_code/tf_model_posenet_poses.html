@@ -160,6 +160,8 @@
                     keypointsx = keypoints3;
                     canvasx = canvas3;
             }
+            console.log("IDX: ", idx);
+            console.log("Output1: ", outputx);
             var c1=canvasx;
             c1.width = samplex.naturalWidth;
             c1.height = samplex.naturalHeight;
@@ -182,7 +184,7 @@
                 ctx2.fillText(i, x, y);
             }
             var data = c2.toDataURL('image/png');
-            console.log("Output: ", outputx);
+            console.log("Output2: ", outputx);
             outputx.setAttribute('src', data);
         }
         window.addEventListener('load', startup, false);
