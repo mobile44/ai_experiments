@@ -105,7 +105,8 @@
                             keypointsx = keypoints3;
                             canvasx = canvas3;
                 }
-                await posenet.load().then(function(net){   
+                await posenet.load().then(function(net){
+                    console.log("Sample: ", samplex);
                     return net.estimateMultiplePoses(samplex, {
                     flipHorizontal: false,
                     maxDetections: 1,
