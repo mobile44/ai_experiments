@@ -21,10 +21,10 @@
                 display: table;
                 clear: both;
             }
-            #canvas {
+            .canvas {
                 display: none;
             }
-            #keypoints {
+            .keypoints {
                 font-size: 14px;
             }
         </style>
@@ -35,15 +35,15 @@
             <div class="row">
                 <div class="column">
                     <div id='photo1'>
-                        <canvas id="canvas1"></canvas>
+                        <canvas id="canvas1" class="canvas"></canvas>
                         <img id='sample1' src='./images/stand.jpg '/>
                     </div>
                     <div id='photo2'>
-                        <canvas id="canvas2"></canvas>
+                        <canvas id="canvas2" class="canvas"></canvas>
                         <img id='sample2' src='./images/sit.jpg '/>
                     </div>
                     <div id='photo3'>
-                        <canvas id="canvas3"></canvas>
+                        <canvas id="canvas3" class="canvas"></canvas>
                         <img id='sample3' src='./images/laydown.jpg '/>
                     </div>
                 </div>
@@ -59,11 +59,11 @@
                     </div>
                 </div>
                 <div class="column">
-                    <div id='keypoints1'>
+                    <div id='keypoints1' class="keypoints">
                     </div>
-                    <div id='keypoints2'>
+                    <div id='keypoints2' class="keypoints">
                     </div>
-                    <div id='keypoints3'>
+                    <div id='keypoints3' class="keypoints">
                     </div>
                 </div>
             </div> 
@@ -90,20 +90,20 @@
             for (k=0; k<3; k++) {
                 switch(k) {
                         case 0:
-                            var samplex = sample1;
-                            outputx = document.getElementById('output1');
-                            keypointsx = document.getElementById('keypoints1');
-                            canvasx = document.getElementById('canvas1');
+                            samplex = sample1;
+                            outputx = output1;
+                            keypointsx = keypoints1;
+                            canvasx = canvas1;
                         case 1:
                             samplex = sample2;
-                            outputx = document.getElementById('output2');
-                            keypointsx = document.getElementById('keypoints2');
-                            canvasx = document.getElementById('canvas2');
+                            outputx = output2;
+                            keypointsx = keypoints2;
+                            canvasx = canvas2;
                         case 2:
                             samplex = sample3;
-                            outputx = document.getElementById('output3');
-                            keypointsx = document.getElementById('keypoints3');
-                            canvasx = document.getElementById('canvas3');
+                            outputx = output3;
+                            keypointsx = keypoints3;
+                            canvasx = canvas3;
                 }
                 posenet.load().then(function(net){   
                     console.log("Sample: ", samplex);
