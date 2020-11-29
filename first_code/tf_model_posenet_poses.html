@@ -110,11 +110,17 @@
                 }
                 await posenet.load().then(function(net){
                     console.log("Sample: ", samplex);
-                    return net.estimateMultiplePoses(samplex, {
+                    /*return net.estimateMultiplePoses(samplex, {
                     flipHorizontal: false,
                     maxDetections: 1,
                     scoreThreshold: 0.6,
-                    nmsRadius: 20})
+                    nmsRadius: 20})*/
+                    return net.estimateSinglePose(samplex, {
+                    flipHorizontal: false,
+                    architecture: 'ResNet50',
+                    outputStride: 32,
+                    /*inputResolution: { width: 257, height: 200 },*/
+                    quantBytes: 2})
                 }).then(function(poses){
                     var text='';
                     var part = "";
