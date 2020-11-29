@@ -191,14 +191,14 @@
                         text += party + "\n";
                         partxy.push(pose.keypoints[j].position);
                     }
-                    rightankle2righthip=pose.keypoints[16].position.y - pose.keypoints[12].position.y;
-                    rightankle2nose=pose.keypoints[16].position.y - pose.keypoints[0].position.y;
-                    rightknee2righthip=pose.keypoints[14].position.y - pose.keypoints[12].position.y;
-                    poserate=rightankle2righthip/rightankle2nose;
+                    righthip2nose = pose.keypoints[12].position.y - pose.keypoints[0].position.y;
+                    rightknee2righthip = pose.keypoints[14].position.y - pose.keypoints[12].position.y;
+                    poserate = rightknee2righthip/righthip2nose;
+                    rightankle2nose = pose.keypoints[16].position.y - pose.keypoints[0].position.y;
                     keypointsx.style.marginTop=pose.keypoints[1].position.y
-                    text += `*Ankle to Hip: ${rightankle2righthip}\n`;
-                    text += `*Ankle to Nose: ${rightankle2nose}\n`;
+                    text += `*Hip to Nose: ${righthip2nose}\n`;
                     text += `*Knee to Hip: ${rightknee2righthip}\n`;
+                    text += `*Angle to Nose: ${rightankle2nose}\n`;
                     text += `*Pose Rate: ${poserate}\n`;
                     keypointsx.innerText= `${text}`;
                     console.log("K:", k);
